@@ -5,9 +5,18 @@ import (
 	"strings"
 )
 
-func PhoneHref(number string) string {
-	replacer := strings.NewReplacer(" ", "", "-", "", "(", "", ")", "", ".", "")
-	return "tel:" + replacer.Replace(number)
+const assetVersion = "20260423-31"
+
+func StaticAssetHref(path string) string {
+	return path + "?v=" + assetVersion
+}
+
+func StylesheetHref() string {
+	return StaticAssetHref("/static/styles.css")
+}
+
+func GalleryScriptHref() string {
+	return StaticAssetHref("/static/gallery.js")
 }
 
 func NavLinkClass(activeSection, itemKey string) string {
@@ -17,29 +26,11 @@ func NavLinkClass(activeSection, itemKey string) string {
 	return "nav-link"
 }
 
-func ActionClass(primary bool) string {
-	if primary {
-		return "button"
-	}
-	return "button button-secondary"
-}
-
 func RentalFilterLinkClass(activeFilter, filterKey string) string {
 	if activeFilter == filterKey {
 		return "filter-link is-active"
 	}
 	return "filter-link"
-}
-
-func InquiryTargetSelector(id string) string {
-	return "#" + id
-}
-
-func InquiryStatusClass(isSuccess bool) string {
-	if isSuccess {
-		return "status-card is-success"
-	}
-	return "status-card is-error"
 }
 
 func RentalFilterHref(filter string) string {
@@ -52,14 +43,6 @@ func RentalFilterHref(filter string) string {
 
 func RentalCatalogPartialHref(filter string) string {
 	return "/partials/rentals?type=" + url.QueryEscape(filter)
-}
-
-func InquiryAction() string {
-	return "/partials/inquiry"
-}
-
-func SchedulePartialHref() string {
-	return "/partials/bar-schedule"
 }
 
 func CommaList(items []string) string {

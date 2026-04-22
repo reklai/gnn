@@ -1,11 +1,9 @@
 package content
 
-import "strings"
-
-type Action struct {
-	Label string
-	Href  string
-}
+import (
+	"strconv"
+	"strings"
+)
 
 type NavItem struct {
 	Key   string
@@ -13,180 +11,140 @@ type NavItem struct {
 	Href  string
 }
 
-type Stat struct {
-	Value string
-	Label string
-}
-
-type FeaturePanel struct {
-	Title  string
-	Detail string
-	Tone   string
-}
-
 type ServiceCard struct {
-	Key        string
-	Title      string
-	Summary    string
-	Href       string
-	Tone       string
-	Highlights []string
+	Title   string
+	Summary string
+	Href    string
+	Tone    string
+}
+
+type PictureSlot struct {
+	Label    string
+	ThumbSrc string
+	FullSrc  string
+	Alt      string
+	Caption  string
+}
+
+func (slot PictureSlot) DisplayLabel() string {
+	switch {
+	case strings.TrimSpace(slot.Caption) != "":
+		return strings.TrimSpace(slot.Caption)
+	case strings.TrimSpace(slot.Label) != "":
+		return strings.TrimSpace(slot.Label)
+	case strings.TrimSpace(slot.Alt) != "":
+		return strings.TrimSpace(slot.Alt)
+	default:
+		return "Photo"
+	}
+}
+
+func (slot PictureSlot) EffectiveAlt() string {
+	if strings.TrimSpace(slot.Alt) != "" {
+		return strings.TrimSpace(slot.Alt)
+	}
+	return slot.DisplayLabel()
+}
+
+func (slot PictureSlot) EffectiveThumbSrc() string {
+	if strings.TrimSpace(slot.ThumbSrc) != "" {
+		return strings.TrimSpace(slot.ThumbSrc)
+	}
+	if strings.TrimSpace(slot.FullSrc) != "" {
+		return strings.TrimSpace(slot.FullSrc)
+	}
+	return ""
+}
+
+func (slot PictureSlot) EffectiveFullSrc() string {
+	if strings.TrimSpace(slot.FullSrc) != "" {
+		return strings.TrimSpace(slot.FullSrc)
+	}
+	if strings.TrimSpace(slot.ThumbSrc) != "" {
+		return strings.TrimSpace(slot.ThumbSrc)
+	}
+	return ""
 }
 
 type RentalOption struct {
 	Key         string
 	Title       string
-	Subtitle    string
 	RateLabel   string
 	LaundryNote string
 	Tone        string
 	Features    []string
-	Gallery     []FeaturePanel
+	Pictures    []PictureSlot
 }
 
 type ServiceCategory struct {
-	Title   string
-	Summary string
-	Tone    string
-	Points  []string
+	Title    string
+	Tone     string
+	Points   []string
+	Pictures []PictureSlot
 }
 
 type ConstructionCard struct {
-	Title   string
-	Summary string
-	Tone    string
-	Points  []string
+	Title    string
+	Tone     string
+	Points   []string
+	Pictures []PictureSlot
 }
 
 type PerformanceNight struct {
 	Day      string
 	Singers  []string
 	Keyboard string
-	Note     string
-}
-
-type InquiryFormConfig struct {
-	Scope       string
-	Title       string
-	Intro       string
-	SubmitLabel string
-	TargetID    string
+	Pictures []PictureSlot
 }
 
 type SiteContent struct {
-	CompanyName        string
-	Tagline            string
-	OfficePhone        string
-	OfficeHours        string
-	BarPhone           string
-	BarHours           string
-	LunchWindow        string
-	HomeStats          []Stat
-	RentalStats        []Stat
-	ServiceCards       []ServiceCard
-	HomePanels         []FeaturePanel
-	RentalPanels       []FeaturePanel
-	CleaningPanels     []FeaturePanel
-	ConstructionPanels []FeaturePanel
-	BarGallery         []FeaturePanel
-	Rentals            []RentalOption
-	CleaningGroups     []ServiceCategory
-	ConstructionCards  []ConstructionCard
-	ConstructionSteps  []string
-	BarSchedule        []PerformanceNight
+	CompanyName       string
+	OfficePhone       string
+	OfficeHours       string
+	BarPhone          string
+	BarHours          string
+	LunchWindow       string
+	ServiceCards      []ServiceCard
+	Rentals           []RentalOption
+	CleaningGroups    []ServiceCategory
+	ConstructionCards []ConstructionCard
+	ConstructionSteps []string
+	BarSchedule       []PerformanceNight
 }
 
 func NewSiteContent() SiteContent {
 	return SiteContent{
 		CompanyName: "GN&N Company",
-		Tagline:     "Rentals, Cleaning, Construction, and Bar from one local business to yours",
 		OfficePhone: "680-488-2307",
 		OfficeHours: "Monday to Saturday · 8am-5pm",
 		BarPhone:    "680-488-5711",
 		BarHours:    "Thursday to Sunday · 10pm-2am",
 		LunchWindow: "11:30am-12:30pm",
-		HomeStats: []Stat{
-			{Value: "4 Services under one brand"},
-			{Value: "3 different rental property types"},
-			{Value: "6 days the offie line is open"},
-			{Value: "4 nights of live band each week"},
-		},
 		ServiceCards: []ServiceCard{
 			{
-				Key:     "rental",
 				Title:   "Space Rental",
-				Summary: "Browse Studios, Two Bedroom Apartments, and Two Bedroom Houses + Yard",
+				Summary: "Browse studios, two-bedroom apartments, and two-bedroom houses.",
 				Href:    "/space-rental",
 				Tone:    "harbor",
-				Highlights: []string{
-					"Studios includes the following: one bedroom + shower room + shared kitchen place",
-					"Two Bedroom Apartments includes the following: two bedroom + bathroom + living room + kitchen",
-					"Two Bedroom Houses includes the following: two bedroom + bathroom + living room + kitchen + backyard",
-					"Affordable rental costs",
-				},
 			},
 			{
-				Key:     "cleaning",
 				Title:   "Cleaning Express",
-				Summary: "Janitorial and Landscaping coverage for residential, commercial, and government agencies",
+				Summary: "Janitorial and landscaping for residential, commercial, and government properties.",
 				Href:    "/cleaning-express",
 				Tone:    "grove",
-				Highlights: []string{
-					"Recurring or One-Time Work",
-					"Janitorial and Landscaping",
-					"Pressure Wash",
-					"Pricing and time flexible based on a per-inspection basis",
-				},
 			},
 			{
-				Key:     "construction",
 				Title:   "Construction",
-				Summary: "Repair work for walls, roofs, pipes, and furniture across multiple property",
+				Summary: "Repair work for walls, roofs, pipes, floors, and furniture.",
 				Href:    "/construction",
-				Tone:    "ember",
-				Highlights: []string{
-					"Residential, commercial, and government agency scope",
-					"Repair and renovation work",
-					"Pricing and time flexible based on a per-inspection basis",
-				},
+				Tone:    "sand",
 			},
 			{
-				Key:     "bar",
 				Title:   "Bayside Bar",
-				Summary: "Late-Night live band from Thursday to Sunday with a stable singer lineup and rotating keyboard musicians",
+				Summary: "Late-night live band from Thursday to Sunday with singers and keyboard lineup.",
 				Href:    "/bar",
 				Tone:    "night",
-				Highlights: []string{
-					"Open 10pm-2am",
-					"Live Band",
-				},
 			},
-		},
-		HomePanels: []FeaturePanel{
-			{Title: "Space Rental", Detail: "Studios, apartments, and houses grouped by layout.", Tone: "harbor"},
-			{Title: "Cleaning Express", Detail: "Janitorial and landscaping support.", Tone: "grove"},
-			{Title: "Construction", Detail: "Renovation work from walls and roofs to pipes and furniture.", Tone: "ember"},
-			{Title: "Bayside Bar", Detail: "Live band Thursday to Sunday, 10pm-2am.", Tone: "night"},
-		},
-		RentalPanels: []FeaturePanel{
-			{Title: "Studios", Detail: "Shared kitchen setup with compact everyday living.", Tone: "harbor"},
-			{Title: "Apartments", Detail: "Two-bedroom apartments with complete living essentials.", Tone: "sand"},
-			{Title: "Houses", Detail: "Two-bedroom houses with yard space included.", Tone: "grove"},
-		},
-		CleaningPanels: []FeaturePanel{
-			{Title: "Floor care", Detail: "Waxing, buffing, sweeping, mopping, and vacuum detail work.", Tone: "grove"},
-			{Title: "Exterior reset", Detail: "Water blasting, trash pickup, and site presentation cleanup.", Tone: "harbor"},
-			{Title: "Landscaping", Detail: "Grass cutting, planting, trimming, and property edge maintenance.", Tone: "sand"},
-		},
-		ConstructionPanels: []FeaturePanel{
-			{Title: "Walls & roofs", Detail: "Patch work and renovation support for aging structures.", Tone: "ember"},
-			{Title: "Pipe fixes", Detail: "Repair-first scope for utility issues discovered on inspection.", Tone: "harbor"},
-			{Title: "Furniture repairs", Detail: "Practical restoration work that closes out interior issues.", Tone: "sand"},
-		},
-		BarGallery: []FeaturePanel{
-			{Title: "Thursdays", Detail: "Lisa Sandei and Jackie Franz open the week.", Tone: "night"},
-			{Title: "Weekend crowd", Detail: "Friday and Saturday bring the fullest singer lineup.", Tone: "ember"},
-			{Title: "Late close", Detail: "Every bar night runs through 2am.", Tone: "harbor"},
 		},
 		Rentals: []RentalOption{
 			{
@@ -196,103 +154,93 @@ func NewSiteContent() SiteContent {
 				LaundryNote: "No on-site laundry. A laundry service is about two minutes away.",
 				Tone:        "harbor",
 				Features: []string{
-					"Single Bedroom Aparment",
-					"All units have their own shower rooms",
-					"Shared kitchen commonplace for all studio tenants",
-					"Best fit for practical, lower-footprint living environment",
+					"Single bedroom apartment",
+					"Private shower room",
+					"Shared kitchen for studio tenants",
+					"Best fit for practical, lower-footprint living",
 				},
-				Gallery: []FeaturePanel{
-					{Title: "Shared kitchen", Detail: "Central prep and cooking area.", Tone: "harbor"},
-					{Title: "Compact studio", Detail: "Simple footprint designed for everyday use.", Tone: "sand"},
-					{Title: "Shower access", Detail: "Private or shared depending on unit.", Tone: "grove"},
-				},
+				Pictures: pictureSlots("Studio unit photo", 4),
 			},
 			{
 				Key:         "apartment",
 				Title:       "Two-Bedroom Apartments",
 				RateLabel:   "Call for the latest monthly rate",
 				LaundryNote: "No on-site laundry. Nearby service remains the closest option.",
-				Tone:        "sand",
+				Tone:        "grove",
 				Features: []string{
 					"Two bedrooms plus living room",
 					"Private shower room and toilet",
 					"Kitchen included in every apartment",
-					"Better suited for roommates or small families",
+					"Good fit for roommates or small families",
 				},
-				Gallery: []FeaturePanel{
-					{Title: "Living room", Detail: "Shared lounge space inside the unit.", Tone: "sand"},
-					{Title: "Two bedrooms", Detail: "Separated sleeping areas.", Tone: "harbor"},
-					{Title: "Kitchen + bath", Detail: "Private utility spaces built into the layout.", Tone: "grove"},
-				},
+				Pictures: pictureSlots("Apartment photo", 4),
 			},
 			{
 				Key:         "house",
 				Title:       "Two-Bedroom Houses",
 				RateLabel:   "Current house pricing by inquiry",
 				LaundryNote: "Built-in laundry washing machine",
-				Tone:        "grove",
+				Tone:        "sand",
 				Features: []string{
 					"Two bedrooms, living room, kitchen, shower room, and toilet",
 					"Private yard space included",
-					"Good fit for tenants who want more separation and room, complete package experience",
+					"More separation and room for longer-stay living",
 				},
-				Gallery: []FeaturePanel{
-					{Title: "House layout", Detail: "Private rooms and fuller family footprint.", Tone: "grove"},
-					{Title: "Outdoor yard", Detail: "Extra breathing room beyond the interior.", Tone: "sand"},
-					{Title: "Complete setup", Detail: "Kitchen, bath, and living space in one home.", Tone: "ember"},
-				},
+				Pictures: pictureSlots("House photo", 4),
 			},
 		},
 		CleaningGroups: []ServiceCategory{
 			{
-				Title:   "Janitorial",
-				Summary: "Detailed cleaning work priced after inspection, whether you need a recurring contract or a one-time reset.",
-				Tone:    "harbor",
+				Title: "Janitorial Cleaning",
+				Tone:  "harbor",
 				Points: []string{
 					"Sweep, mop, vacuum, and wall-cleaning routines",
-					"Bathroom and offices deep cleanup and trash removal",
+					"Bathroom and office deep cleaning",
 					"Waxing and buffing tile floors",
-					"Water blasting, pressure washing concrete",
-					"Residential, commercial, and government agency cleaning",
+					"Water blasting and pressure washing concrete",
+					"Residential, commercial, and government coverage",
 					"Available as contract work or one-time request",
 				},
+				Pictures: pictureSlots("Janitorial photo", 4),
 			},
 			{
-				Title:   "Landscaping",
-				Summary: "Property-edge and grounds maintenance that keeps outdoor spaces presentable and operational.",
-				Tone:    "grove",
+				Title: "Landscaping",
+				Tone:  "grove",
 				Points: []string{
-					"Cutting grass, trimming/shaping work to keep neatness",
-					"Planting trees/flowers",
-					"Picking up trash across the property",
+					"Grass cutting and trimming",
+					"Planting trees and flowers",
+					"Trash pickup across the property",
 					"Available as contract work or one-time request",
 				},
+				Pictures: pictureSlots("Landscaping photo", 4),
 			},
 		},
 		ConstructionCards: []ConstructionCard{
 			{
-				Title: "Renovation & Repair",
-				Tone:  "ember",
+				Title: "Renovate and Repair Scope",
+				Tone:  "harbor",
 				Points: []string{
-					"Wall and roof patching",
+					"Wall, floor, and roof patching",
 					"Pipe fixes and utility repair",
 					"Furniture fixes and touch-up work",
 				},
+				Pictures: pictureSlots("Renovation photo", 2),
 			},
 			{
-				Title: "Property Types",
-				Tone:  "harbor",
+				Title: "Property Coverage",
+				Tone:  "grove",
 				Points: []string{
 					"Residential properties",
 					"Commercial spaces",
 					"Government agencies",
 				},
+				Pictures: pictureSlots("Coverage photo", 2),
 			},
 			{
-				Title: "Inspection Pricing and Flexibility",
+				Title: "Inspection Pricing Model",
 				Tone:  "sand",
 				Points: []string{
-					"Pricing range/scope confirmed once inspection is completed",
+					"Pricing range confirmed after inspection",
 					"Timeline adjusted to job size and complexity",
 					"Available as contract work or one-time request",
 				},
@@ -309,28 +257,44 @@ func NewSiteContent() SiteContent {
 				Day:      "Thursday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz"},
 				Keyboard: "Maslyn or Brandon depending on schedule",
-				Note:     "Opening night lineup with a smaller singer rotation.",
+				Pictures: pictureSlots("Thursday stage photo", 1),
 			},
 			{
 				Day:      "Friday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
 				Keyboard: "Maslyn or Brandon depending on schedule",
-				Note:     "Full singer lineup for the weekend crowd.",
+				Pictures: pictureSlots("Friday stage photo", 1),
 			},
 			{
 				Day:      "Saturday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
 				Keyboard: "Maslyn or Brandon depending on schedule",
-				Note:     "Peak-night entertainment with the same full singer list.",
+				Pictures: pictureSlots("Saturday stage photo", 1),
 			},
 			{
 				Day:      "Sunday",
 				Singers:  []string{"Jackie Franz", "Sasa Naruo"},
 				Keyboard: "Maslyn or Brandon depending on schedule",
-				Note:     "Late-week closer with a tighter singer set.",
+				Pictures: pictureSlots("Sunday stage photo", 1),
 			},
 		},
 	}
+}
+
+func pictureSlots(prefix string, count int) []PictureSlot {
+	if count < 1 {
+		return nil
+	}
+
+	slots := make([]PictureSlot, 0, count)
+	for index := 0; index < count; index++ {
+		slots = append(slots, PictureSlot{
+			Label:   prefix + " " + strconv.Itoa(index+1),
+			Alt:     prefix + " " + strconv.Itoa(index+1),
+			Caption: prefix + " " + strconv.Itoa(index+1),
+		})
+	}
+	return slots
 }
 
 func PrimaryNavItems() []NavItem {
@@ -377,44 +341,4 @@ func FilterRentalOptions(rentals []RentalOption, filter string) []RentalOption {
 		}
 	}
 	return filteredRentals
-}
-
-func HomeInquiryForm() InquiryFormConfig {
-	return InquiryFormConfig{
-		Scope:       "General Inquiry",
-		Title:       "Start with a quick inquiry",
-		Intro:       "Leave a name, callback number, and a short note. GN&N can route you to the right service line.",
-		SubmitLabel: "Send inquiry",
-		TargetID:    "home-inquiry-response",
-	}
-}
-
-func RentalInquiryForm() InquiryFormConfig {
-	return InquiryFormConfig{
-		Scope:       "Space Rental",
-		Title:       "Ask about units",
-		Intro:       "Use this form for current rates, viewings, and unit questions.",
-		SubmitLabel: "Request rental follow-up",
-		TargetID:    "rental-inquiry-response",
-	}
-}
-
-func CleaningInquiryForm() InquiryFormConfig {
-	return InquiryFormConfig{
-		Scope:       "Cleaning Express",
-		Title:       "Request a cleaning inspection",
-		Intro:       "Pricing and timing are set after inspection, so the fastest next step is a callback request.",
-		SubmitLabel: "Request cleaning quote",
-		TargetID:    "cleaning-inquiry-response",
-	}
-}
-
-func ConstructionInquiryForm() InquiryFormConfig {
-	return InquiryFormConfig{
-		Scope:       "Construction",
-		Title:       "Book a construction inspection",
-		Intro:       "Share the problem area and GN&N can follow up with the next inspection window.",
-		SubmitLabel: "Request inspection",
-		TargetID:    "construction-inquiry-response",
-	}
 }

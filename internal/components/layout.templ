@@ -13,8 +13,10 @@ templ Layout(site content.SiteContent, title string, active string) {
 				name="description"
 				content="GN&N Company website for space rental, cleaning, construction, and Bayside Bar."
 			/>
-			<link rel="stylesheet" href="/static/styles.css"/>
+			<meta name="theme-color" content="#0f141c"/>
+			<link rel="stylesheet" href={ templ.URL(StylesheetHref()) }/>
 			<script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+			<script src={ templ.URL(GalleryScriptHref()) } defer></script>
 		</head>
 		<body class={ "page page-" + active }>
 			@Header(site, active)
@@ -23,6 +25,7 @@ templ Layout(site content.SiteContent, title string, active string) {
 					{ children... }
 				</div>
 			</main>
+			@GalleryModal()
 			@Footer(site)
 		</body>
 	</html>
@@ -42,14 +45,14 @@ templ Header(site content.SiteContent, active string) {
 				}
 			</nav>
 			<div class="header-contacts">
-				<a class="contact-pill" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
+				<div class="contact-pill">
 					<span>Office</span>
 					<strong>{ site.OfficePhone }</strong>
-				</a>
-				<a class="contact-pill contact-pill-bar" href={ templ.URL(PhoneHref(site.BarPhone)) }>
+				</div>
+				<div class="contact-pill contact-pill-bar">
 					<span>Bar</span>
 					<strong>{ site.BarPhone }</strong>
-				</a>
+				</div>
 			</div>
 			<details class="mobile-nav">
 				<summary>Menu</summary>
@@ -60,14 +63,14 @@ templ Header(site content.SiteContent, active string) {
 						</a>
 					}
 					<div class="mobile-contact-group">
-						<a class="contact-pill" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
+						<div class="contact-pill">
 							<span>Office</span>
 							<strong>{ site.OfficePhone }</strong>
-						</a>
-						<a class="contact-pill contact-pill-bar" href={ templ.URL(PhoneHref(site.BarPhone)) }>
+						</div>
+						<div class="contact-pill contact-pill-bar">
 							<span>Bar</span>
 							<strong>{ site.BarPhone }</strong>
-						</a>
+						</div>
 					</div>
 				</div>
 			</details>
@@ -78,24 +81,50 @@ templ Header(site content.SiteContent, active string) {
 templ Footer(site content.SiteContent) {
 	<footer class="site-footer">
 		<div class="container footer-compact">
-			<div class="footer-company">
-				<strong>{ site.CompanyName }</strong>
-			</div>
-			<div class="footer-contact-group">
-				<a class="footer-contact" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
-					<span>Office</span>
-					<strong>{ site.OfficePhone }</strong>
-					<small>{ site.OfficeHours }</small>
-				</a>
-				<a class="footer-contact" href={ templ.URL(PhoneHref(site.BarPhone)) }>
-					<span>Bar</span>
-					<strong>{ site.BarPhone }</strong>
-					<small>{ site.BarHours }</small>
-				</a>
-			</div>
 			<div class="footer-region">
 				<span>Palau local services</span>
 			</div>
+			<div class="footer-contact-group">
+				<div class="footer-contact">
+					<span>Office</span>
+					<strong>{ site.OfficePhone }</strong>
+					<small>{ site.OfficeHours }</small>
+				</div>
+				<div class="footer-contact">
+					<span>Bar</span>
+					<strong>{ site.BarPhone }</strong>
+					<small>{ site.BarHours }</small>
+				</div>
+			</div>
 		</div>
 	</footer>
+}
+
+templ GalleryModal() {
+	<div class="gallery-modal" data-gallery-modal hidden="">
+		<div class="gallery-modal-backdrop" data-gallery-close></div>
+		<div class="gallery-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="gallery-modal-count">
+			<button type="button" class="gallery-modal-close" data-gallery-close aria-label="Close photo gallery">
+				Close
+			</button>
+			<div class="gallery-modal-stage">
+				<button
+					type="button"
+					class="gallery-modal-nav"
+					data-gallery-prev
+					aria-label="Previous photo"
+				>
+					‹
+				</button>
+				<div class="gallery-modal-frame" data-gallery-frame></div>
+				<button type="button" class="gallery-modal-nav" data-gallery-next aria-label="Next photo">
+					›
+				</button>
+			</div>
+			<div class="gallery-modal-meta">
+				<p id="gallery-modal-count" class="gallery-modal-count" data-gallery-count></p>
+				<p class="gallery-modal-caption" data-gallery-caption></p>
+			</div>
+		</div>
+	</div>
 }

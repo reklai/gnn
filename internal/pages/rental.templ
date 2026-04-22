@@ -7,7 +7,6 @@ import (
 
 templ SpaceRental(site content.SiteContent, filter string, rentals []content.RentalOption) {
 	@components.Layout(site, "Space Rental", "rental") {
-		@components.StatsBand(site.RentalStats)
 		<section id="rental-catalog" class="page-section">
 			@components.RentalCatalogSection(filter, rentals)
 		</section>
