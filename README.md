@@ -189,14 +189,9 @@ Production-oriented improvements already included:
 - HTTP server timeouts in `cmd/web/main.go`
 - thumbnail/full-image split in the gallery model
 
-Main future performance risk:
-
-- large uploaded images
-
-If traffic grows, the next obvious step is to put static assets behind a reverse proxy or CDN.
-
 ## Notes
 
+- The purpose of is to be a static based website that is tailored to my current needs
 - The site content is currently code-driven, not CMS-driven
 - Placeholder images are intentional and can be replaced card by card
 - The gallery modal is shared globally, but each trigger only opens the images for its own card
