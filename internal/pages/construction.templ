@@ -8,19 +8,9 @@ import (
 templ Construction(site content.SiteContent) {
 	@components.Layout(site, "Construction", "construction") {
 		<section id="construction-services" class="page-section">
-			@components.SectionIntro(
-				"Services",
-				"Renovation and repair framed in plain language",
-				"Instead of generic contractor copy, this mirrors the README: wall and roof patches, pipe fixes, and furniture repairs across residential, commercial, and government work.",
-			)
 			@components.ConstructionCardGrid(site.ConstructionCards)
 		</section>
 		<section class="page-section">
-			@components.SectionIntro(
-				"Process",
-				"Inspection first keeps estimates grounded",
-				"The process strip gives the page structure without pretending there is a fully automated quote workflow behind it.",
-			)
 			@components.ProcessSteps(site.ConstructionSteps)
 		</section>
 	}

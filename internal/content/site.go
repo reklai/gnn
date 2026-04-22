@@ -192,7 +192,6 @@ func NewSiteContent() SiteContent {
 			{
 				Key:         "studio",
 				Title:       "Studio Units",
-				Subtitle:    "Compact living with a shared-kitchen setup.",
 				RateLabel:   "Call for the latest monthly rate",
 				LaundryNote: "No on-site laundry. A laundry service is about two minutes away.",
 				Tone:        "harbor",
@@ -211,7 +210,6 @@ func NewSiteContent() SiteContent {
 			{
 				Key:         "apartment",
 				Title:       "Two-Bedroom Apartments",
-				Subtitle:    "Full apartment layouts with private essentials.",
 				RateLabel:   "Call for the latest monthly rate",
 				LaundryNote: "No on-site laundry. Nearby service remains the closest option.",
 				Tone:        "sand",
@@ -230,7 +228,6 @@ func NewSiteContent() SiteContent {
 			{
 				Key:         "house",
 				Title:       "Two-Bedroom Houses",
-				Subtitle:    "Standalone homes with additional outdoor space.",
 				RateLabel:   "Current house pricing by inquiry",
 				LaundryNote: "Built-in laundry washing machine",
 				Tone:        "grove",
@@ -252,11 +249,12 @@ func NewSiteContent() SiteContent {
 				Summary: "Detailed cleaning work priced after inspection, whether you need a recurring contract or a one-time reset.",
 				Tone:    "harbor",
 				Points: []string{
-					"Waxing and buffing tile floors",
-					"Residential, commercial, and government agency cleaning",
-					"Water blasting and pressure washing",
 					"Sweep, mop, vacuum, and wall-cleaning routines",
-					"Trash removal and post-job reset",
+					"Bathroom and offices deep cleanup and trash removal",
+					"Waxing and buffing tile floors",
+					"Water blasting, pressure washing concrete",
+					"Residential, commercial, and government agency cleaning",
+					"Available as contract work or one-time request",
 				},
 			},
 			{
@@ -264,19 +262,17 @@ func NewSiteContent() SiteContent {
 				Summary: "Property-edge and grounds maintenance that keeps outdoor spaces presentable and operational.",
 				Tone:    "grove",
 				Points: []string{
-					"Cutting grass and keeping grounds neat",
-					"Planting trees and flowers",
-					"Trimming and shaping work",
+					"Cutting grass, trimming/shaping work to keep neatness",
+					"Planting trees/flowers",
 					"Picking up trash across the property",
-					"Inspection-first scope for contract or one-off service",
+					"Available as contract work or one-time request",
 				},
 			},
 		},
 		ConstructionCards: []ConstructionCard{
 			{
-				Title:   "Renovation & Repair Scope",
-				Summary: "Fixes move from obvious structural wear to practical everyday repairs after site review.",
-				Tone:    "ember",
+				Title: "Renovation & Repair",
+				Tone:  "ember",
 				Points: []string{
 					"Wall and roof patching",
 					"Pipe fixes and utility repair",
@@ -284,21 +280,19 @@ func NewSiteContent() SiteContent {
 				},
 			},
 			{
-				Title:   "Property Types",
-				Summary: "Work is available for the same mix of clients already reflected across the business.",
-				Tone:    "harbor",
+				Title: "Property Types",
+				Tone:  "harbor",
 				Points: []string{
 					"Residential properties",
 					"Commercial spaces",
-					"Government agency jobs",
+					"Government agencies",
 				},
 			},
 			{
-				Title:   "Inspection-Led Planning",
-				Summary: "Pricing and timing are shaped after seeing the actual site conditions, not guessed up front.",
-				Tone:    "sand",
+				Title: "Inspection Pricing and Flexibility",
+				Tone:  "sand",
 				Points: []string{
-					"Scope confirmed during inspection",
+					"Pricing range/scope confirmed once inspection is completed",
 					"Timeline adjusted to job size and complexity",
 					"Available as contract work or one-time request",
 				},

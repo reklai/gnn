@@ -8,11 +8,6 @@ import (
 templ CleaningExpress(site content.SiteContent) {
 	@components.Layout(site, "Cleaning Express", "cleaning") {
 		<section id="cleaning-services" class="page-section">
-			@components.SectionIntro(
-				"Scope",
-				"Two service groups, one quote path",
-				"Janitorial and landscaping are separated into their own cards so the offer stays clear even on mobile.",
-			)
 			@components.ServiceCategoryGrid(site.CleaningGroups)
 		</section>
 	}

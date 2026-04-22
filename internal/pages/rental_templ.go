@@ -54,14 +54,6 @@ func SpaceRental(site content.SiteContent, filter string, rentals []content.Rent
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.SectionIntro(
-				"Rental layouts",
-				"Layouts first, details second",
-				"The filter row is wired with HTMX so the grid updates without reloading the page. Without JavaScript, the same links still work as normal navigation.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
 			templ_7745c5c3_Err = components.RentalCatalogSection(filter, rentals).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err

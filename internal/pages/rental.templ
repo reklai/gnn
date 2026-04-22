@@ -9,11 +9,6 @@ templ SpaceRental(site content.SiteContent, filter string, rentals []content.Ren
 	@components.Layout(site, "Space Rental", "rental") {
 		@components.StatsBand(site.RentalStats)
 		<section id="rental-catalog" class="page-section">
-			@components.SectionIntro(
-				"Rental layouts",
-				"Layouts first, details second",
-				"The filter row is wired with HTMX so the grid updates without reloading the page. Without JavaScript, the same links still work as normal navigation.",
-			)
 			@components.RentalCatalogSection(filter, rentals)
 		</section>
 	}

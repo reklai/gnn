@@ -50,27 +50,11 @@ func Construction(site content.SiteContent) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.SectionIntro(
-				"Services",
-				"Renovation and repair framed in plain language",
-				"Instead of generic contractor copy, this mirrors the README: wall and roof patches, pipe fixes, and furniture repairs across residential, commercial, and government work.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
 			templ_7745c5c3_Err = components.ConstructionCardGrid(site.ConstructionCards).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section><section class=\"page-section\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = components.SectionIntro(
-				"Process",
-				"Inspection first keeps estimates grounded",
-				"The process strip gives the page structure without pretending there is a fully automated quote workflow behind it.",
-			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

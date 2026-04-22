@@ -1,6 +1,9 @@
 :root {
   --surface: rgba(255, 255, 255, 0.84);
   --surface-strong: rgba(255, 255, 255, 0.97);
+  --card-surface: #ffffff;
+  --card-surface-soft: #fbfdff;
+  --card-border: rgba(148, 163, 184, 0.24);
   --ink: #1f2937;
   --muted: #64748b;
   --line: rgba(31, 41, 55, 0.12);
@@ -15,6 +18,8 @@
   --surface-shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.05);
   --surface-shadow-medium: 0 14px 32px rgba(15, 23, 42, 0.06);
   --surface-shadow-lift: 0 18px 36px rgba(15, 23, 42, 0.12);
+  --card-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  --card-shadow-strong: 0 14px 28px rgba(15, 23, 42, 0.08);
 
   --selection-ink: #fffaf2;
   --solid-ink: #fffaf2;
@@ -31,9 +36,9 @@
   --page-ambient-a: rgba(0, 106, 255, 0.12);
   --page-ambient-b: rgba(148, 163, 184, 0.08);
   --page-ambient-c: rgba(245, 158, 11, 0.06);
-  --page-bg-top: #eef4ff;
-  --page-bg-mid: #f7faff;
-  --page-bg-bottom: #fcfdff;
+  --page-bg-top: #e6eef8;
+  --page-bg-mid: #eef4f9;
+  --page-bg-bottom: #f6f8fc;
 
   --header-bg: rgba(255, 255, 255, 0.86);
   --footer-bg: rgba(248, 250, 252, 0.8);
@@ -301,9 +306,9 @@ ol {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: var(--surface-shadow-soft);
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .hero {
@@ -311,7 +316,7 @@ ol {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 1.4rem;
   padding: 2rem;
-  background: var(--surface-strong);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
 }
 
 .home-landing {
@@ -319,7 +324,7 @@ ol {
   gap: 1.6rem;
   padding: 2.4rem 2rem 2rem;
   text-align: center;
-  background: var(--surface-strong);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
 }
 
 .home-landing-copy {
@@ -353,9 +358,9 @@ ol {
   gap: 0.15rem;
   padding: 1rem 1.1rem;
   border-radius: 1.25rem;
-  border: 1px solid var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .home-contact-chip span,
@@ -382,9 +387,9 @@ ol {
   border-radius: 1rem;
   overflow: hidden;
   color: var(--ink);
-  border: 1px solid var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
   text-align: left;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
@@ -416,8 +421,8 @@ ol {
 .home-quick-link:hover,
 .home-quick-link:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(0, 106, 255, 0.2);
-  box-shadow: var(--surface-shadow-medium);
+  border-color: rgba(0, 106, 255, 0.22);
+  box-shadow: var(--card-shadow-strong);
 }
 
 .hero-copy {
@@ -525,9 +530,9 @@ ol {
 .stat-card {
   padding: 1.2rem 1.25rem;
   border-radius: 1.3rem;
-  background: var(--surface-strong);
-  border: 1px solid var(--line);
-  box-shadow: var(--surface-shadow-medium);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow-strong);
   display: grid;
   gap: 0.35rem;
 }
@@ -613,9 +618,9 @@ ol {
   border-radius: 1.3rem;
   overflow: hidden;
   color: var(--ink);
-  border: 1px solid var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .media-tile strong {
@@ -674,9 +679,9 @@ ol {
 
 .service-card[data-tone] {
   color: var(--ink);
-  border-color: var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border-color: var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .service-card[data-tone]::before {
@@ -733,9 +738,9 @@ ol {
 .rental-card {
   padding: 1.35rem;
   color: var(--ink);
-  border-color: var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border-color: var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .rental-card::before {
@@ -756,9 +761,9 @@ ol {
 .service-group-card,
 .construction-card {
   color: var(--ink);
-  border-color: var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border-color: var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .service-group-card::before,
@@ -826,8 +831,8 @@ ol {
   gap: 0.15rem;
   padding: 1rem;
   border-radius: 1.1rem;
-  background: var(--surface-strong);
-  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  border: 1px solid var(--card-border);
 }
 
 .contact-summary span,
@@ -939,9 +944,9 @@ ol {
 .schedule-panel {
   color: var(--ink);
   padding: 1.5rem;
-  border-color: var(--line);
-  background: var(--surface-strong);
-  box-shadow: var(--surface-shadow-soft);
+  border-color: var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  box-shadow: var(--card-shadow);
 }
 
 .schedule-panel .button-secondary {
@@ -958,8 +963,8 @@ ol {
 
 .schedule-card {
   color: var(--ink);
-  border-color: var(--line);
-  background: var(--surface);
+  border-color: var(--card-border);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
   box-shadow: none;
 }
 
@@ -1025,8 +1030,8 @@ ol {
   justify-items: center;
   text-align: center;
   border-radius: 1rem;
-  background: var(--surface-strong);
-  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-soft));
+  border: 1px solid var(--card-border);
 }
 
 .footer-contact span,

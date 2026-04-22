@@ -233,9 +233,7 @@ templ SchedulePanel(nights []content.PerformanceNight) {
 	<section id="bar-schedule" class="panel schedule-panel" data-tone="night">
 		<div class="schedule-head">
 			<div>
-				<p class="eyebrow">Live lineup</p>
 				<h2>Thursday to Sunday, 10pm-2am</h2>
-				<p>The singer list is fixed here, while keyboard support rotates between Maslyn and Brandon.</p>
 			</div>
 			<button
 				class="button button-secondary button-inline"
@@ -250,10 +248,12 @@ templ SchedulePanel(nights []content.PerformanceNight) {
 		<div class="card-grid schedule-grid">
 			for _, night := range nights {
 				<article class="panel schedule-card" data-tone="night">
-					<p class="eyebrow">{ night.Day }</p>
-					<h3>{ CommaList(night.Singers) }</h3>
-					<p><strong>Keyboard:</strong> { night.Keyboard }</p>
-					<p>{ night.Note }</p>
+					<h4 class="eyebrow">{ night.Day }</h4>
+					<h5><strong>Singers:</strong> { CommaList(night.Singers) }</h5>
+					<h5><strong>Keyboard:</strong> { night.Keyboard }</h5>
+					if night.Note != "" {
+						<p>{ night.Note }</p>
+					}
 				</article>
 			}
 		</div>

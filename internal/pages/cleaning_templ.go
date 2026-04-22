@@ -50,14 +50,6 @@ func CleaningExpress(site content.SiteContent) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.SectionIntro(
-				"Scope",
-				"Two service groups, one quote path",
-				"Janitorial and landscaping are separated into their own cards so the offer stays clear even on mobile.",
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
 			templ_7745c5c3_Err = components.ServiceCategoryGrid(site.CleaningGroups).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
