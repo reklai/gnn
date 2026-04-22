@@ -14,21 +14,21 @@ func HomeHeroActions(site content.SiteContent) []content.Action {
 
 func RentalHeroActions(site content.SiteContent) []content.Action {
 	return []content.Action{
-		{Label: "Ask about units", Href: "#rental-contact"},
+		{Label: "View layouts", Href: "#rental-catalog"},
 		{Label: "Call office", Href: components.PhoneHref(site.OfficePhone)},
 	}
 }
 
 func CleaningHeroActions(site content.SiteContent) []content.Action {
 	return []content.Action{
-		{Label: "Request a quote", Href: "#cleaning-contact"},
+		{Label: "View services", Href: "#cleaning-services"},
 		{Label: "Call office", Href: components.PhoneHref(site.OfficePhone)},
 	}
 }
 
 func ConstructionHeroActions(site content.SiteContent) []content.Action {
 	return []content.Action{
-		{Label: "Book inspection", Href: "#construction-contact"},
+		{Label: "View services", Href: "#construction-services"},
 		{Label: "Call office", Href: components.PhoneHref(site.OfficePhone)},
 	}
 }

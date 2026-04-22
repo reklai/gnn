@@ -30,14 +30,16 @@ templ Hero(eyebrow string, title string, copy string, actions []content.Action, 
 }
 
 templ StatsBand(stats []content.Stat) {
-	<section class="stat-band">
-		for _, stat := range stats {
-			<div class="stat-card">
-				<strong>{ stat.Value }</strong>
-				<span>{ stat.Label }</span>
-			</div>
-		}
-	</section>
+	if len(stats) > 0 {
+		<section class="stat-band">
+			for _, stat := range stats {
+				<div class="stat-card">
+					<strong>{ stat.Value }</strong>
+					<span>{ stat.Label }</span>
+				</div>
+			}
+		</section>
+	}
 }
 
 templ SectionIntro(eyebrow string, title string, copy string) {

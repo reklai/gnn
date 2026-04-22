@@ -105,18 +105,6 @@ func NewSiteContent() SiteContent {
 		BarPhone:    "680-488-5711",
 		BarHours:    "Thursday to Sunday · 10pm-2am",
 		LunchWindow: "11:30am-12:30pm",
-		HomeStats: []Stat{
-			{Value: "4", Label: "service lines under one brand"},
-			{Value: "3", Label: "different rental property types"},
-			{Value: "6", Label: "days the office line is open"},
-			{Value: "4", Label: "nights of live band each week"},
-		},
-		RentalStats: []Stat{
-			{Value: "Studio", Label: "one bedroom, shower room, shared-kitchen space"},
-			{Value: "2 Bedroom Apartments", Label: "two bedroom, kitchen, bathroom, and living room"},
-			{Value: "2 Bedroom Houses", Label: "two bedroom, kitchen, bathroom, living room, and a yard"},
-			{Value: "Rental Prices", Label: "Affordable rental costs"},
-		},
 		ServiceCards: []ServiceCard{
 			{
 				Key:     "rental",

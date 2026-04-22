@@ -40,40 +40,5 @@ templ Home(site content.SiteContent) {
 				}
 			</div>
 		</section>
-		@components.StatsBand(site.HomeStats)
-		<section class="page-section">
-			@components.SectionIntro(
-				"Overview",
-				"Simple front page, direct paths underneath",
-				"The home page is now intentionally lighter: center the GN&N identity first, then push visitors straight into one of the four service pages.",
-			)
-		</section>
-		<section class="page-section two-column">
-			<div class="panel narrative-panel">
-				<p class="eyebrow">Contact first</p>
-				<h2>Calls route faster than guesswork</h2>
-				<p>
-					The office line is available during the day for rentals, cleaning, and construction. Bayside Bar keeps its own line during live hours. The lunch window is shown clearly so visitors know when callbacks may pause.
-				</p>
-				<div class="contact-summary">
-					<div>
-						<span>Office</span>
-						<strong>{ site.OfficePhone }</strong>
-						<small>{ site.OfficeHours }</small>
-					</div>
-					<div>
-						<span>Bar</span>
-						<strong>{ site.BarPhone }</strong>
-						<small>{ site.BarHours }</small>
-					</div>
-					<div>
-						<span>Lunch</span>
-						<strong>{ site.LunchWindow }</strong>
-						<small>Expect slower responses during this hour.</small>
-					</div>
-				</div>
-			</div>
-			@components.InquiryForm(content.HomeInquiryForm())
-		</section>
 	}
 }

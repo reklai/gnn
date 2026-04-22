@@ -32,8 +32,7 @@ templ Header(site content.SiteContent, active string) {
 	<header class="site-header">
 		<div class="container header-row">
 			<a class="brand-lockup" href="/">
-				<span class="brand-kicker">Palau local services</span>
-				// <span class="brand-name">{ site.CompanyName }</span>
+				<span class="brand-name">{ site.CompanyName }</span>
 			</a>
 			<nav class="desktop-nav" aria-label="Primary navigation">
 				for _, item := range content.PrimaryNavItems() {
@@ -78,30 +77,24 @@ templ Header(site content.SiteContent, active string) {
 
 templ Footer(site content.SiteContent) {
 	<footer class="site-footer">
-		<div class="container footer-grid">
-			<div class="footer-block">
-				<p class="eyebrow">GN&N Company</p>
-				<h2>Direct lines and hours</h2>
-				<p>{ site.Tagline }</p>
+		<div class="container footer-compact">
+			<div class="footer-company">
+				<strong>{ site.CompanyName }</strong>
 			</div>
-			<div class="footer-block">
-				<h3>Office</h3>
-				<a href={ templ.URL(PhoneHref(site.OfficePhone)) }>{ site.OfficePhone }</a>
-				<p>{ site.OfficeHours }</p>
-				<p>{ site.LunchWindow }</p>
+			<div class="footer-contact-group">
+				<a class="footer-contact" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
+					<span>Office</span>
+					<strong>{ site.OfficePhone }</strong>
+					<small>{ site.OfficeHours }</small>
+				</a>
+				<a class="footer-contact" href={ templ.URL(PhoneHref(site.BarPhone)) }>
+					<span>Bar</span>
+					<strong>{ site.BarPhone }</strong>
+					<small>{ site.BarHours }</small>
+				</a>
 			</div>
-			<div class="footer-block">
-				<h3>Bayside Bar</h3>
-				<a href={ templ.URL(PhoneHref(site.BarPhone)) }>{ site.BarPhone }</a>
-				<p>{ site.BarHours }</p>
-			</div>
-			<div class="footer-block">
-				<h3>Navigate</h3>
-				<div class="footer-links">
-					for _, item := range content.PrimaryNavItems() {
-						<a href={ templ.URL(item.Href) }>{ item.Label }</a>
-					}
-				</div>
+			<div class="footer-region">
+				<span>Palau local services</span>
 			</div>
 		</div>
 	</footer>

@@ -46,25 +46,11 @@ func SpaceRental(site content.SiteContent, filter string, rentals []content.Rent
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = components.Hero(
-				"Rental options",
-				"Space Rental",
-				"Studios, apartments, and houses are grouped by type so visitors can compare layouts quickly before making an inquiry.",
-				RentalHeroActions(site),
-				site.RentalPanels,
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
 			templ_7745c5c3_Err = components.StatsBand(site.RentalStats).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " <section class=\"page-section\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section id=\"rental-catalog\" class=\"page-section\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -80,15 +66,7 @@ func SpaceRental(site content.SiteContent, filter string, rentals []content.Rent
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</section><section id=\"rental-contact\" class=\"page-section two-column\"><div class=\"panel narrative-panel\"><p class=\"eyebrow\">Important note</p><h2>Laundry is nearby, not on-site</h2><p>Every rental type carries the same operational note from the README: there is no on-site laundry service, but one is close by and reachable in around two minutes.</p><p>The pricing copy stays honest here because the README did not define exact rates. The implementation leaves the listing structure ready for real monthly prices whenever they are finalized.</p></div>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = components.InquiryForm(content.RentalInquiryForm()).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
