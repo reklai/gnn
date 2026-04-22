@@ -105,6 +105,12 @@ func NewSiteContent() SiteContent {
 		BarPhone:    "680-488-5711",
 		BarHours:    "Thursday to Sunday · 10pm-2am",
 		LunchWindow: "11:30am-12:30pm",
+		HomeStats: []Stat{
+			{Value: "4 Services under one brand"},
+			{Value: "3 different rental property types"},
+			{Value: "6 days the offie line is open"},
+			{Value: "4 nights of live band each week"},
+		},
 		ServiceCards: []ServiceCard{
 			{
 				Key:     "rental",
@@ -191,10 +197,10 @@ func NewSiteContent() SiteContent {
 				LaundryNote: "No on-site laundry. A laundry service is about two minutes away.",
 				Tone:        "harbor",
 				Features: []string{
+					"Single Bedroom Aparment",
+					"All units have their own shower rooms",
 					"Shared kitchen commonplace for all studio tenants",
-					"3 units include their own shower room",
-					"3 units use the shared toilet area while keeping the same common-living setup",
-					"Best fit for practical, lower-footprint living",
+					"Best fit for practical, lower-footprint living environment",
 				},
 				Gallery: []FeaturePanel{
 					{Title: "Shared kitchen", Detail: "Central prep and cooking area.", Tone: "harbor"},
@@ -206,14 +212,14 @@ func NewSiteContent() SiteContent {
 				Key:         "apartment",
 				Title:       "Two-Bedroom Apartments",
 				Subtitle:    "Full apartment layouts with private essentials.",
-				RateLabel:   "Current apartment pricing by inquiry",
+				RateLabel:   "Call for the latest monthly rate",
 				LaundryNote: "No on-site laundry. Nearby service remains the closest option.",
 				Tone:        "sand",
 				Features: []string{
 					"Two bedrooms plus living room",
 					"Private shower room and toilet",
 					"Kitchen included in every apartment",
-					"Better suited to roommates or small families",
+					"Better suited for roommates or small families",
 				},
 				Gallery: []FeaturePanel{
 					{Title: "Living room", Detail: "Shared lounge space inside the unit.", Tone: "sand"},
@@ -226,13 +232,12 @@ func NewSiteContent() SiteContent {
 				Title:       "Two-Bedroom Houses",
 				Subtitle:    "Standalone homes with additional outdoor space.",
 				RateLabel:   "Current house pricing by inquiry",
-				LaundryNote: "Laundry service is off-site and reachable in about two minutes.",
+				LaundryNote: "Built-in laundry washing machine",
 				Tone:        "grove",
 				Features: []string{
 					"Two bedrooms, living room, kitchen, shower room, and toilet",
 					"Private yard space included",
-					"Most complete layout in the current inventory",
-					"Good fit for tenants who want more separation and room",
+					"Good fit for tenants who want more separation and room, complete package experience",
 				},
 				Gallery: []FeaturePanel{
 					{Title: "House layout", Detail: "Private rooms and fuller family footprint.", Tone: "grove"},

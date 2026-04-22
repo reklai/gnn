@@ -124,14 +124,6 @@ templ RentalOptionCard(rental content.RentalOption) {
 			</div>
 		</div>
 		<p class="muted-copy">{ rental.Subtitle }</p>
-		<div class="tile-grid tile-grid-compact">
-			for _, galleryPanel := range rental.Gallery {
-				<article class="media-tile media-tile-small" data-tone={ galleryPanel.Tone }>
-					<strong>{ galleryPanel.Title }</strong>
-					<span>{ galleryPanel.Detail }</span>
-				</article>
-			}
-		</div>
 		<ul class="bullet-list">
 			for _, feature := range rental.Features {
 				<li>{ feature }</li>
@@ -238,7 +230,7 @@ templ InquiryStatus(title string, message string, isSuccess bool) {
 }
 
 templ SchedulePanel(nights []content.PerformanceNight) {
-	<section id="bar-schedule" class="panel schedule-panel">
+	<section id="bar-schedule" class="panel schedule-panel" data-tone="night">
 		<div class="schedule-head">
 			<div>
 				<p class="eyebrow">Live lineup</p>

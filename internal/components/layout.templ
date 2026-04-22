@@ -16,7 +16,7 @@ templ Layout(site content.SiteContent, title string, active string) {
 			<link rel="stylesheet" href="/static/styles.css"/>
 			<script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
 		</head>
-		<body>
+		<body class={ "page page-" + active }>
 			@Header(site, active)
 			<main class="page-shell">
 				<div class="container page-stack">
