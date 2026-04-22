@@ -1,0 +1,79 @@
+package pages
+
+import (
+	"gnn/internal/components"
+	"gnn/internal/content"
+)
+
+templ Home(site content.SiteContent) {
+	@components.Layout(site, "Home", "home") {
+		<section class="home-landing panel">
+			<div class="home-landing-copy">
+				<h1>{ site.CompanyName }</h1>
+				<p class="home-landing-lead">
+					All in one service: Space Rental, Cleaning Express, Construction, and Bayside Bar.
+				</p>
+				<div class="home-contact-row">
+					<a class="home-contact-chip" href={ components.PhoneHref(site.OfficePhone) }>
+						<span>Office</span>
+						<strong>{ site.OfficePhone }</strong>
+						<small>{ site.OfficeHours }</small>
+					</a>
+					<a class="home-contact-chip" href={ components.PhoneHref(site.BarPhone) }>
+						<span>Bar</span>
+						<strong>{ site.BarPhone }</strong>
+						<small>{ site.BarHours }</small>
+					</a>
+					<div class="home-contact-chip">
+						<span>Lunch Break</span>
+						<strong>{ site.LunchWindow }</strong>
+						<small>Responses may pause briefly</small>
+					</div>
+				</div>
+			</div>
+			<div class="home-quick-links">
+				for _, card := range site.ServiceCards {
+					<a class="home-quick-link" data-tone={ card.Tone } href={ card.Href }>
+						<strong>{ card.Title }</strong>
+						<small>{ card.Summary }</small>
+					</a>
+				}
+			</div>
+		</section>
+		@components.StatsBand(site.HomeStats)
+		<section class="page-section">
+			@components.SectionIntro(
+				"Overview",
+				"Simple front page, direct paths underneath",
+				"The home page is now intentionally lighter: center the GN&N identity first, then push visitors straight into one of the four service pages.",
+			)
+		</section>
+		<section class="page-section two-column">
+			<div class="panel narrative-panel">
+				<p class="eyebrow">Contact first</p>
+				<h2>Calls route faster than guesswork</h2>
+				<p>
+					The office line is available during the day for rentals, cleaning, and construction. Bayside Bar keeps its own line during live hours. The lunch window is shown clearly so visitors know when callbacks may pause.
+				</p>
+				<div class="contact-summary">
+					<div>
+						<span>Office</span>
+						<strong>{ site.OfficePhone }</strong>
+						<small>{ site.OfficeHours }</small>
+					</div>
+					<div>
+						<span>Bar</span>
+						<strong>{ site.BarPhone }</strong>
+						<small>{ site.BarHours }</small>
+					</div>
+					<div>
+						<span>Lunch</span>
+						<strong>{ site.LunchWindow }</strong>
+						<small>Expect slower responses during this hour.</small>
+					</div>
+				</div>
+			</div>
+			@components.InquiryForm(content.HomeInquiryForm())
+		</section>
+	}
+}

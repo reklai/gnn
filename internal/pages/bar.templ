@@ -1,0 +1,39 @@
+package pages
+
+import (
+	"gnn/internal/components"
+	"gnn/internal/content"
+)
+
+templ Bar(site content.SiteContent) {
+	@components.Layout(site, "Bayside Bar", "bar") {
+		@components.Hero(
+			"Live music every bar night",
+			"Bayside Bar",
+			"Thursday to Sunday from 10pm to 2am, with singers listed by night and keyboard support rotating based on schedule.",
+			BarHeroActions(site),
+			site.BarGallery,
+		)
+		<section class="page-section">
+			@components.SchedulePanel(site.BarSchedule)
+		</section>
+		<section class="page-section two-column">
+			<div class="panel narrative-panel">
+				<p class="eyebrow">Vibe</p>
+				<h2>Built for quick schedule checks</h2>
+				<p>
+					The page is structured so phone users can land here, confirm the lineup in a few seconds, and tap the bar number immediately.
+				</p>
+				<p>
+					The refresh action is intentionally simple. Right now it just re-renders the schedule panel through HTMX, but the route is already isolated for later data-driven updates.
+				</p>
+			</div>
+			<div class="panel callout-panel">
+				<p class="eyebrow">Direct line</p>
+				<h2>{ site.BarPhone }</h2>
+				<p>{ site.BarHours }</p>
+				<a class="button" href={ components.PhoneHref(site.BarPhone) }>Call Bayside Bar</a>
+			</div>
+		</section>
+	}
+}

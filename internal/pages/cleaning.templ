@@ -1,0 +1,39 @@
+package pages
+
+import (
+	"gnn/internal/components"
+	"gnn/internal/content"
+)
+
+templ CleaningExpress(site content.SiteContent) {
+	@components.Layout(site, "Cleaning Express", "cleaning") {
+		@components.Hero(
+			"Professional cleaning",
+			"Cleaning Express",
+			"Janitorial and landscaping work is organized around inspection-led pricing, flexible scheduling, and support for residential, commercial, and government clients.",
+			CleaningHeroActions(site),
+			site.CleaningPanels,
+		)
+		<section class="page-section">
+			@components.SectionIntro(
+				"Scope",
+				"Two service groups, one quote path",
+				"Janitorial and landscaping are separated into their own cards so the offer stays clear even on mobile.",
+			)
+			@components.ServiceCategoryGrid(site.CleaningGroups)
+		</section>
+		<section class="page-section two-column">
+			<div class="panel callout-panel">
+				<p class="eyebrow">Pricing note</p>
+				<h2>Pricing and timing are set after inspection</h2>
+				<p>
+					This follows the README directly: jobs can be handled as a contract or a one-time request, but a site check shapes the actual estimate and schedule.
+				</p>
+				@components.FeaturePanelGrid(site.CleaningPanels)
+			</div>
+			<div id="cleaning-contact">
+				@components.InquiryForm(content.CleaningInquiryForm())
+			</div>
+		</section>
+	}
+}

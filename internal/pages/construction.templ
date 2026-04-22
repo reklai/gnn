@@ -1,0 +1,45 @@
+package pages
+
+import (
+	"gnn/internal/components"
+	"gnn/internal/content"
+)
+
+templ Construction(site content.SiteContent) {
+	@components.Layout(site, "Construction", "construction") {
+		@components.Hero(
+			"Inspection-led building work",
+			"Construction",
+			"The construction section stays focused on scope clarity: what gets fixed, who the work is for, and how estimates are formed after an inspection.",
+			ConstructionHeroActions(site),
+			site.ConstructionPanels,
+		)
+		<section class="page-section">
+			@components.SectionIntro(
+				"Services",
+				"Renovation and repair framed in plain language",
+				"Instead of generic contractor copy, this mirrors the README: wall and roof patches, pipe fixes, and furniture repairs across residential, commercial, and government work.",
+			)
+			@components.ConstructionCardGrid(site.ConstructionCards)
+		</section>
+		<section class="page-section">
+			@components.SectionIntro(
+				"Process",
+				"Inspection first keeps estimates grounded",
+				"The process strip gives the page structure without pretending there is a fully automated quote workflow behind it.",
+			)
+			@components.ProcessSteps(site.ConstructionSteps)
+		</section>
+		<section id="construction-contact" class="page-section two-column">
+			<div class="panel callout-panel">
+				<p class="eyebrow">Project focus</p>
+				<h2>Scope can widen from repairs into renovation</h2>
+				<p>
+					That matters for the copy and the layout. The page needs to reassure smaller-fix customers while still signaling that larger renovation work is on the table.
+				</p>
+				@components.FeaturePanelGrid(site.ConstructionPanels)
+			</div>
+			@components.InquiryForm(content.ConstructionInquiryForm())
+		</section>
+	}
+}

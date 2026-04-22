@@ -1,0 +1,108 @@
+package components
+
+import "gnn/internal/content"
+
+templ Layout(site content.SiteContent, title string, active string) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<title>{ title } · { site.CompanyName }</title>
+			<meta
+				name="description"
+				content="GN&N Company website for space rental, cleaning, construction, and Bayside Bar."
+			/>
+			<link rel="stylesheet" href="/static/styles.css"/>
+			<script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+		</head>
+		<body>
+			@Header(site, active)
+			<main class="page-shell">
+				<div class="container page-stack">
+					{ children... }
+				</div>
+			</main>
+			@Footer(site)
+		</body>
+	</html>
+}
+
+templ Header(site content.SiteContent, active string) {
+	<header class="site-header">
+		<div class="container header-row">
+			<a class="brand-lockup" href="/">
+				<span class="brand-kicker">Palau local services</span>
+				// <span class="brand-name">{ site.CompanyName }</span>
+			</a>
+			<nav class="desktop-nav" aria-label="Primary navigation">
+				for _, item := range content.PrimaryNavItems() {
+					<a class={ NavLinkClass(active, item.Key) } href={ templ.URL(item.Href) }>
+						{ item.Label }
+					</a>
+				}
+			</nav>
+			<div class="header-contacts">
+				<a class="contact-pill" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
+					<span>Office</span>
+					<strong>{ site.OfficePhone }</strong>
+				</a>
+				<a class="contact-pill contact-pill-bar" href={ templ.URL(PhoneHref(site.BarPhone)) }>
+					<span>Bar</span>
+					<strong>{ site.BarPhone }</strong>
+				</a>
+			</div>
+			<details class="mobile-nav">
+				<summary>Menu</summary>
+				<div class="mobile-nav-panel">
+					for _, item := range content.PrimaryNavItems() {
+						<a class={ NavLinkClass(active, item.Key) } href={ templ.URL(item.Href) }>
+							{ item.Label }
+						</a>
+					}
+					<div class="mobile-contact-group">
+						<a class="contact-pill" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
+							<span>Office</span>
+							<strong>{ site.OfficePhone }</strong>
+						</a>
+						<a class="contact-pill contact-pill-bar" href={ templ.URL(PhoneHref(site.BarPhone)) }>
+							<span>Bar</span>
+							<strong>{ site.BarPhone }</strong>
+						</a>
+					</div>
+				</div>
+			</details>
+		</div>
+	</header>
+}
+
+templ Footer(site content.SiteContent) {
+	<footer class="site-footer">
+		<div class="container footer-grid">
+			<div class="footer-block">
+				<p class="eyebrow">GN&N Company</p>
+				<h2>Direct lines and hours</h2>
+				<p>{ site.Tagline }</p>
+			</div>
+			<div class="footer-block">
+				<h3>Office</h3>
+				<a href={ templ.URL(PhoneHref(site.OfficePhone)) }>{ site.OfficePhone }</a>
+				<p>{ site.OfficeHours }</p>
+				<p>{ site.LunchWindow }</p>
+			</div>
+			<div class="footer-block">
+				<h3>Bayside Bar</h3>
+				<a href={ templ.URL(PhoneHref(site.BarPhone)) }>{ site.BarPhone }</a>
+				<p>{ site.BarHours }</p>
+			</div>
+			<div class="footer-block">
+				<h3>Navigate</h3>
+				<div class="footer-links">
+					for _, item := range content.PrimaryNavItems() {
+						<a href={ templ.URL(item.Href) }>{ item.Label }</a>
+					}
+				</div>
+			</div>
+		</div>
+	</footer>
+}
