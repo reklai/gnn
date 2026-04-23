@@ -57,7 +57,7 @@ func Layout(site content.SiteContent, title string, active string) templ.Compone
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</title><meta name=\"description\" content=\"GN&N Company website for space rental, cleaning, construction, and Bayside Bar.\"><meta name=\"theme-color\" content=\"#0f141c\"><link rel=\"stylesheet\" href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</title><meta name=\"description\" content=\"GN&N Company website for space rental, cleaning, construction, and Bayside Bar.\"><meta name=\"theme-color\" content=\"#b4c1ce\"><link rel=\"stylesheet\" href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
