@@ -94,7 +94,6 @@ type PerformanceNight struct {
 	Day      string
 	Singers  []string
 	Keyboard string
-	Pictures []PictureSlot
 }
 
 type SiteContent struct {
@@ -110,6 +109,7 @@ type SiteContent struct {
 	ConstructionCards []ConstructionCard
 	ConstructionSteps []string
 	BarSchedule       []PerformanceNight
+	BarPictures       []PictureSlot
 }
 
 func NewSiteContent() SiteContent {
@@ -257,27 +257,24 @@ func NewSiteContent() SiteContent {
 				Day:      "Thursday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz"},
 				Keyboard: "Maslyn",
-				Pictures: pictureSlots("Thursday stage photo", 1),
 			},
 			{
 				Day:      "Friday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
 				Keyboard: "Maslyn",
-				Pictures: pictureSlots("Friday stage photo", 1),
 			},
 			{
 				Day:      "Saturday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
 				Keyboard: "Brandon",
-				Pictures: pictureSlots("Saturday stage photo", 1),
 			},
 			{
 				Day:      "Sunday",
 				Singers:  []string{"Jackie Franz", "Sasa Naruo"},
 				Keyboard: "Brandon",
-				Pictures: pictureSlots("Sunday stage photo", 1),
 			},
 		},
+		BarPictures: pictureSlots("Bar stage photo", 4),
 	}
 }
 

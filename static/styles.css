@@ -947,11 +947,12 @@ ol {
 
 .schedule-panel {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto auto;
   color: var(--ink);
   min-height: 100%;
   padding: 1rem;
   border-color: var(--card-border);
+  gap: 0.8rem;
 }
 
 .schedule-card {
@@ -974,14 +975,6 @@ ol {
   margin-top: 0;
 }
 
-.schedule-card .picture-strip {
-  grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr));
-}
-
-.schedule-card .picture-slot {
-  min-height: 4.3rem;
-}
-
 .schedule-label {
   color: var(--muted-strong);
   font-weight: 700;
@@ -996,6 +989,29 @@ ol {
 
 .schedule-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.schedule-gallery-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  color: var(--ink);
+  border-color: var(--card-border);
+  box-shadow: none;
+}
+
+.schedule-gallery-card h3 {
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  line-height: 1.16;
+  margin: 0;
+}
+
+.schedule-gallery-card .picture-strip {
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+}
+
+.schedule-gallery-card .picture-slot {
+  min-height: 5rem;
 }
 
 .site-footer {

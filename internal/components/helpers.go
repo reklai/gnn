@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const assetVersion = "20260423-62"
+const assetVersion = "20260423-63"
 
 func StaticAssetHref(path string) string {
 	return path + "?v=" + assetVersion

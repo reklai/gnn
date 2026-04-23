@@ -46,7 +46,7 @@ func Home(site content.SiteContent) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"home-hero panel\"><div class=\"home-hero-copy\"><p class=\"eyebrow\">Local Services</p><h1>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"home-hero panel\"><div class=\"home-hero-copy\"><p class=\"eyebrow\">Palau's local services</p><h1>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -59,7 +59,7 @@ func Home(site content.SiteContent) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</h1><p class=\"home-landing-lead\">Space rental, cleaning, construction, and Bayside Bar in one place.</p><div class=\"home-contact-pills\"><a class=\"contact-pill footer-contact-pill\" href=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</h1><p class=\"home-landing-lead\">All the services in one place for your convenience</p><div class=\"home-contact-pills\"><a class=\"contact-pill footer-contact-pill\" href=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

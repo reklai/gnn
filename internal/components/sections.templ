@@ -163,7 +163,7 @@ templ ProcessSteps(items []string) {
 	</ol>
 }
 
-templ SchedulePanel(nights []content.PerformanceNight) {
+templ SchedulePanel(nights []content.PerformanceNight, pictures []content.PictureSlot) {
 	<section id="bar-schedule" class="panel schedule-panel" data-tone="night">
 		<div class="schedule-head">
 			<div>
@@ -174,7 +174,6 @@ templ SchedulePanel(nights []content.PerformanceNight) {
 			for _, night := range nights {
 				<article class="panel schedule-card" data-tone="night">
 					<h4 class="eyebrow">{ night.Day }</h4>
-					@PictureStrip("bar-"+night.Day, night.Pictures)
 					<h5>
 						<span class="schedule-label">Singers:</span>
 						<strong class="schedule-value">{ CommaList(night.Singers) }</strong>
@@ -186,5 +185,10 @@ templ SchedulePanel(nights []content.PerformanceNight) {
 				</article>
 			}
 		</div>
+		if len(pictures) > 0 {
+			<div class="panel schedule-gallery-card" data-tone="night">
+				@PictureStrip("bar-collection", pictures)
+			</div>
+		}
 	</section>
 }
