@@ -7,8 +7,29 @@ import (
 
 templ CleaningExpress(site content.SiteContent) {
 	@components.Layout(site, "Cleaning Express", "cleaning") {
+		@components.PageHero(
+			site,
+			"Cleaning Express",
+			"Janitorial and landscaping support for active properties",
+			"Residential, commercial, and government work available as contract service or one-time requests.",
+			"Call Office",
+			components.PhoneHref(site.OfficePhone),
+		)
 		<section id="cleaning-services" class="page-section">
+			@components.SectionLead(
+				"Cleaning Coverage",
+				"Routine upkeep and property cleanup in two work lanes",
+				"Use janitorial services for interior cleaning and landscaping for outdoor upkeep and trash pickup.",
+			)
 			@components.ServiceCategoryGrid(site.CleaningGroups)
 		</section>
+		@components.ContactBand(
+			site,
+			"Book A Crew",
+			"Coordinate janitorial or landscaping support",
+			"Call GN&N to confirm the property type, service scope, and whether you need a contract or one-time request.",
+			"Call Office",
+			components.PhoneHref(site.OfficePhone),
+		)
 	}
 }

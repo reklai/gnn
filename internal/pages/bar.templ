@@ -7,8 +7,29 @@ import (
 
 templ Bar(site content.SiteContent) {
 	@components.Layout(site, "Bayside Bar", "bar") {
+		@components.PageHero(
+			site,
+			"Bayside Bar",
+			"Late-night live band from Thursday to Sunday",
+			"Check the singer and keyboard schedule, then use the bar line for live-night questions.",
+			"Call Bar",
+			components.PhoneHref(site.BarPhone),
+		)
 		<section class="page-section">
+			@components.SectionLead(
+				"Live Schedule",
+				"See the current stage lineup by night",
+				"Review the singers and keyboard rotation before heading to Bayside Bar.",
+			)
 			@components.SchedulePanel(site.BarSchedule)
 		</section>
+		@components.ContactBand(
+			site,
+			"Night Contact",
+			"Use the bar line for lineup and night-of questions",
+			"Thursday to Sunday operations run through the Bayside Bar number.",
+			"Call Bar",
+			components.PhoneHref(site.BarPhone),
+		)
 	}
 }

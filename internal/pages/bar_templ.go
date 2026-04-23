@@ -46,7 +46,26 @@ func Bar(site content.SiteContent) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"page-section\">")
+			templ_7745c5c3_Err = components.PageHero(
+				site,
+				"Bayside Bar",
+				"Late-night live band from Thursday to Sunday",
+				"Check the singer and keyboard schedule, then use the bar line for live-night questions.",
+				"Call Bar",
+				components.PhoneHref(site.BarPhone),
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section class=\"page-section\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.SectionLead(
+				"Live Schedule",
+				"See the current stage lineup by night",
+				"Review the singers and keyboard rotation before heading to Bayside Bar.",
+			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -55,6 +74,17 @@ func Bar(site content.SiteContent) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.ContactBand(
+				site,
+				"Night Contact",
+				"Use the bar line for lineup and night-of questions",
+				"Thursday to Sunday operations run through the Bayside Bar number.",
+				"Call Bar",
+				components.PhoneHref(site.BarPhone),
+			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

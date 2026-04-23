@@ -46,7 +46,26 @@ func Construction(site content.SiteContent) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"construction-services\" class=\"page-section\">")
+			templ_7745c5c3_Err = components.PageHero(
+				site,
+				"Construction",
+				"Inspection-based repair and renovation support",
+				"Review the repair scope, then book an inspection so GN&N can confirm pricing and timeline.",
+				"Call Office",
+				components.PhoneHref(site.OfficePhone),
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section id=\"construction-services\" class=\"page-section\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.SectionLead(
+				"Repair Scope",
+				"Property work across patching, utilities, and renovation",
+				"GN&N handles residential, commercial, and government repair requests with pricing confirmed after inspection.",
+			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -58,11 +77,30 @@ func Construction(site content.SiteContent) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+			templ_7745c5c3_Err = components.SectionLead(
+				"Work Flow",
+				"How construction requests move from call to job window",
+				"Book the inspection first, then approve the scope and timing directly with GN&N.",
+			).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 			templ_7745c5c3_Err = components.ProcessSteps(site.ConstructionSteps).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</section>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.ContactBand(
+				site,
+				"Schedule Inspection",
+				"Call before your next repair or renovation request",
+				"Use the office line to describe the issue and set the inspection window.",
+				"Call Office",
+				components.PhoneHref(site.OfficePhone),
+			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

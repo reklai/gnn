@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const assetVersion = "20260423-45"
+const assetVersion = "20260423-46"
 
 func StaticAssetHref(path string) string {
 	return path + "?v=" + assetVersion
@@ -17,6 +17,25 @@ func StylesheetHref() string {
 
 func GalleryScriptHref() string {
 	return StaticAssetHref("/static/gallery.js")
+}
+
+func PhoneHref(number string) string {
+	digits := strings.Map(func(r rune) rune {
+		if r >= '0' && r <= '9' {
+			return r
+		}
+		return -1
+	}, number)
+
+	if digits == "" {
+		return "#"
+	}
+
+	if strings.HasPrefix(digits, "680") {
+		return "tel:+" + digits
+	}
+
+	return "tel:" + digits
 }
 
 func NavLinkClass(activeSection, itemKey string) string {
