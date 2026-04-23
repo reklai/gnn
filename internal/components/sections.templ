@@ -17,61 +17,24 @@ templ SectionLead(eyebrow string, title string, summary string) {
 templ PageHero(site content.SiteContent, eyebrow string, title string, summary string, actionLabel string, actionHref string) {
 	<section class="page-hero panel">
 		<div class="page-hero-copy">
-			<p class="eyebrow">{ eyebrow }</p>
+			if eyebrow != "" {
+				<p class="eyebrow">{ eyebrow }</p>
+			}
 			<h1>{ title }</h1>
-			<p class="page-hero-summary">{ summary }</p>
-			<div class="hero-actions">
-				<a class="action-button action-button-primary" href={ templ.URL(actionHref) }>{ actionLabel }</a>
-				<a class="action-button action-button-secondary" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
-					Office { site.OfficePhone }
-				</a>
-			</div>
-		</div>
-		<div class="page-hero-aside">
-			<div class="hero-aside-card">
-				<span>Office Hours</span>
-				<strong>{ site.OfficeHours }</strong>
-				<small>Lunch break { site.LunchWindow }</small>
-			</div>
-			<div class="hero-aside-card">
-				<span>Bayside Bar</span>
-				<strong>{ site.BarPhone }</strong>
-				<small>{ site.BarHours }</small>
-			</div>
-		</div>
-	</section>
-}
-
-templ ContactBand(site content.SiteContent, eyebrow string, title string, summary string, actionLabel string, actionHref string) {
-	<section class="contact-band panel">
-		<div class="contact-band-copy">
-			<p class="eyebrow">{ eyebrow }</p>
-			<h2>{ title }</h2>
-			<p class="section-summary">{ summary }</p>
-		</div>
-		<div class="contact-band-actions">
-			<a class="action-button action-button-primary" href={ templ.URL(actionHref) }>{ actionLabel }</a>
-			<div class="contact-band-meta">
-				<div>
-					<span>Office</span>
-					<strong>{ site.OfficePhone }</strong>
+			if summary != "" {
+				<p class="page-hero-summary">{ summary }</p>
+			}
+			if actionLabel != "" && actionHref != "" {
+				<div class="hero-actions">
+					<a class="action-button action-button-primary" href={ templ.URL(actionHref) }>{ actionLabel }</a>
 				</div>
-				<div>
-					<span>Bar</span>
-					<strong>{ site.BarPhone }</strong>
-				</div>
-			</div>
+			}
 		</div>
 	</section>
 }
 
 templ RentalCatalogSection(activeFilter string, rentals []content.RentalOption) {
 	<section id="rental-explorer" class="page-section rental-explorer">
-		@SectionLead(
-			"Rental Stock",
-			"Available units by layout",
-			"Filter studios, apartments, and houses. Rates and availability are confirmed through the office.",
-		)
 		<div class="filter-row">
 			for _, item := range content.RentalFilterItems() {
 				<a

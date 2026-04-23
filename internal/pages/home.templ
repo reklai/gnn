@@ -9,16 +9,22 @@ templ Home(site content.SiteContent) {
 	@components.Layout(site, "Home", "home") {
 		<section class="home-hero panel">
 			<div class="home-hero-copy">
-				<p class="eyebrow">Local Operations</p>
+				<p class="eyebrow">Palau's local services</p>
 				<h1>{ site.CompanyName }</h1>
 				<p class="home-landing-lead">
-					One local operator for space rentals, janitorial cleaning, construction repair work, and Bayside Bar.
+					All the services in one place for your convenience
 				</p>
-				<div class="hero-actions">
-					<a class="action-button action-button-primary" href={ templ.URL(components.PhoneHref(site.OfficePhone)) }>
-						Call Office
+				<div class="home-contact-pills">
+					<a class="contact-pill footer-contact-pill" href={ templ.URL(components.PhoneHref(site.OfficePhone)) }>
+						<span>Office</span>
+						<strong>{ site.OfficePhone }</strong>
+						<small>{ site.OfficeHours }</small>
 					</a>
-					<a class="action-button action-button-secondary" href="#service-command">View Service Lines</a>
+					<a class="contact-pill contact-pill-bar footer-contact-pill" href={ templ.URL(components.PhoneHref(site.BarPhone)) }>
+						<span>Bar</span>
+						<strong>{ site.BarPhone }</strong>
+						<small>{ site.BarHours }</small>
+					</a>
 				</div>
 			</div>
 			<div class="hero-service-stack">
@@ -31,53 +37,5 @@ templ Home(site content.SiteContent) {
 				}
 			</div>
 		</section>
-		<section class="home-operations panel">
-			@components.SectionLead(
-				"Daily Coverage",
-				"One company across property, maintenance, and nightlife support",
-				"Use the office for rentals, cleaning, and construction coordination. Use the bar line for late-night schedule questions.",
-			)
-			<div class="home-contact-row">
-				<div class="home-contact-chip">
-					<h5><span>Office</span></h5>
-					<strong>{ site.OfficePhone }</strong>
-					<small>{ site.OfficeHours }</small>
-				</div>
-				<div class="home-contact-chip">
-					<h5><span>Bar</span></h5>
-					<strong>{ site.BarPhone }</strong>
-					<small>{ site.BarHours }</small>
-				</div>
-				<div class="home-contact-chip">
-					<h5><span>Lunch Break</span></h5>
-					<strong>{ site.LunchWindow }</strong>
-					<small>Expect a short pause in responses</small>
-				</div>
-			</div>
-		</section>
-		<section id="service-command" class="page-section home-service-command">
-			@components.SectionLead(
-				"Service Lines",
-				"Choose the lane you need right now",
-				"Browse the current categories, then call GN&N directly to confirm availability, scope, or schedule.",
-			)
-			<div class="home-quick-links">
-				for _, card := range site.ServiceCards {
-					<a class="home-quick-link" data-tone={ card.Tone } href={ card.Href }>
-						<strong>{ card.Title }</strong>
-						<small>{ card.Summary }</small>
-						<span class="home-quick-cta">View service</span>
-					</a>
-				}
-			</div>
-		</section>
-		@components.ContactBand(
-			site,
-			"Call GN&N",
-			"Need a unit, a crew, a repair visit, or tonight’s lineup?",
-			"Use the office line for rentals, cleaning, and construction. Use the bar line for live schedule questions.",
-			"Call Office",
-			components.PhoneHref(site.OfficePhone),
-		)
 	}
 }

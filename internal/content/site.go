@@ -135,7 +135,7 @@ func NewSiteContent() SiteContent {
 			},
 			{
 				Title:   "Construction",
-				Summary: "Repair work for walls, roofs, pipes, floors, and furniture.",
+				Summary: "Repair work for homes, walls, roofs, pipes, floors, and furniture.",
 				Href:    "/construction",
 				Tone:    "sand",
 			},
@@ -256,25 +256,25 @@ func NewSiteContent() SiteContent {
 			{
 				Day:      "Thursday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz"},
-				Keyboard: "Maslyn or Brandon depending on schedule",
+				Keyboard: "Maslyn",
 				Pictures: pictureSlots("Thursday stage photo", 1),
 			},
 			{
 				Day:      "Friday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
-				Keyboard: "Maslyn or Brandon depending on schedule",
+				Keyboard: "Maslyn",
 				Pictures: pictureSlots("Friday stage photo", 1),
 			},
 			{
 				Day:      "Saturday",
 				Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
-				Keyboard: "Maslyn or Brandon depending on schedule",
+				Keyboard: "Brandon",
 				Pictures: pictureSlots("Saturday stage photo", 1),
 			},
 			{
 				Day:      "Sunday",
 				Singers:  []string{"Jackie Franz", "Sasa Naruo"},
-				Keyboard: "Maslyn or Brandon depending on schedule",
+				Keyboard: "Brandon",
 				Pictures: pictureSlots("Sunday stage photo", 1),
 			},
 		},

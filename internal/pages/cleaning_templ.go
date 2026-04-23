@@ -46,26 +46,7 @@ func CleaningExpress(site content.SiteContent) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = components.PageHero(
-				site,
-				"Cleaning Express",
-				"Janitorial and landscaping support for active properties",
-				"Residential, commercial, and government work available as contract service or one-time requests.",
-				"Call Office",
-				components.PhoneHref(site.OfficePhone),
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section id=\"cleaning-services\" class=\"page-section\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = components.SectionLead(
-				"Cleaning Coverage",
-				"Routine upkeep and property cleanup in two work lanes",
-				"Use janitorial services for interior cleaning and landscaping for outdoor upkeep and trash pickup.",
-			).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"cleaning-services\" class=\"page-section\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -74,17 +55,6 @@ func CleaningExpress(site content.SiteContent) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = components.ContactBand(
-				site,
-				"Book A Crew",
-				"Coordinate janitorial or landscaping support",
-				"Call GN&N to confirm the property type, service scope, and whether you need a contract or one-time request.",
-				"Call Office",
-				components.PhoneHref(site.OfficePhone),
-			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

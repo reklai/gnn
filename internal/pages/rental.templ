@@ -7,24 +7,8 @@ import (
 
 templ SpaceRental(site content.SiteContent, filter string, rentals []content.RentalOption) {
 	@components.Layout(site, "Space Rental", "rental") {
-		@components.PageHero(
-			site,
-			"Space Rental",
-			"Rental units and houses ready for inquiry",
-			"Filter by layout, review the unit types, and call the office for the latest rate and current availability.",
-			"Call Office",
-			components.PhoneHref(site.OfficePhone),
-		)
 		<section id="rental-catalog" class="page-section">
 			@components.RentalCatalogSection(filter, rentals)
 		</section>
-		@components.ContactBand(
-			site,
-			"Rental Inquiry",
-			"Talk to the office before your next move",
-			"Availability and monthly rates are confirmed directly through GN&N.",
-			"Call Office",
-			components.PhoneHref(site.OfficePhone),
-		)
 	}
 }

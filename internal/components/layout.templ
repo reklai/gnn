@@ -19,7 +19,6 @@ templ Layout(site content.SiteContent, title string, active string) {
 			<script src={ templ.URL(GalleryScriptHref()) } defer></script>
 		</head>
 		<body class={ "page page-" + active }>
-			@UtilityBar(site)
 			@Header(site, active)
 			<main class="page-shell">
 				<div class="container page-stack">
@@ -32,23 +31,12 @@ templ Layout(site content.SiteContent, title string, active string) {
 	</html>
 }
 
-templ UtilityBar(site content.SiteContent) {
-	<div class="utility-bar">
-		<div class="container utility-row">
-			<span><strong>Office</strong> { site.OfficePhone }</span>
-			<span><strong>Office Hours</strong> { site.OfficeHours }</span>
-			<span><strong>Bar</strong> { site.BarPhone }</span>
-			<span><strong>Bar Hours</strong> { site.BarHours }</span>
-		</div>
-	</div>
-}
-
 templ Header(site content.SiteContent, active string) {
 	<header class="site-header">
 		<div class="container header-row">
 			<a class="brand-lockup" href="/">
 				<span class="brand-name">{ site.CompanyName }</span>
-				<span class="brand-tag">Local rental, cleaning, construction, and Bayside Bar operations</span>
+				<span class="brand-tag">Rental, cleaning, construction, and Bayside Bar</span>
 			</a>
 			<nav class="desktop-nav" aria-label="Primary navigation">
 				for _, item := range content.PrimaryNavItems() {
@@ -66,19 +54,7 @@ templ Header(site content.SiteContent, active string) {
 							{ item.Label }
 						</a>
 					}
-					<div class="mobile-contact-group">
-						<div class="contact-pill">
-							<span>Office</span>
-							<strong>{ site.OfficePhone }</strong>
-						</div>
-						<div class="contact-pill contact-pill-bar">
-							<span>Bar</span>
-							<strong>{ site.BarPhone }</strong>
-						</div>
-					</div>
-					<a class="header-cta mobile-header-cta" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
-						Call Office
-					</a>
+					<a class="mobile-header-cta" href={ templ.URL(PhoneHref(site.OfficePhone)) }>Call Office</a>
 				</div>
 			</details>
 		</div>
@@ -87,38 +63,21 @@ templ Header(site content.SiteContent, active string) {
 
 templ Footer(site content.SiteContent) {
 	<footer class="site-footer">
-		<div class="container footer-grid">
-			<div class="footer-column footer-brand-column">
-				<span class="footer-kicker">GN&N Company</span>
-				<p class="footer-copy">
-					Local operations across space rental, cleaning, construction repair, and Bayside Bar.
-				</p>
-			</div>
-			<div class="footer-column">
-				<span class="footer-kicker">Service Lines</span>
-				<nav class="footer-link-list" aria-label="Footer navigation">
-					for _, item := range content.PrimaryNavItems() {
-						if item.Key != "home" {
-							<a class="footer-link" href={ templ.URL(item.Href) }>{ item.Label }</a>
-						}
-					}
-				</nav>
-			</div>
-			<div class="footer-column">
-				<span class="footer-kicker">Contact</span>
-				<div class="footer-contact-stack">
-					<div class="footer-contact-block">
-						<span>Office</span>
-						<strong>{ site.OfficePhone }</strong>
-						<small>{ site.OfficeHours }</small>
-					</div>
-					<div class="footer-contact-block">
-						<span>Bar</span>
-						<strong>{ site.BarPhone }</strong>
-						<small>{ site.BarHours }</small>
-					</div>
-					<p class="footer-note">Lunch break: { site.LunchWindow }</p>
-				</div>
+		<div class="container footer-row">
+			<a class="contact-pill footer-contact-pill" href={ templ.URL(PhoneHref(site.OfficePhone)) }>
+				<span>Office</span>
+				<strong>{ site.OfficePhone }</strong>
+				<small>{ site.OfficeHours }</small>
+			</a>
+			<a class="contact-pill contact-pill-bar footer-contact-pill" href={ templ.URL(PhoneHref(site.BarPhone)) }>
+				<span>Bar</span>
+				<strong>{ site.BarPhone }</strong>
+				<small>{ site.BarHours }</small>
+			</a>
+			<div class="footer-note-pill">
+				<span>Lunch Break</span>
+				<strong>{ site.LunchWindow }</strong>
+				<small>Response may become delayed during this time.</small>
 			</div>
 		</div>
 	</footer>

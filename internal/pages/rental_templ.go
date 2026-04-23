@@ -46,18 +46,7 @@ func SpaceRental(site content.SiteContent, filter string, rentals []content.Rent
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = components.PageHero(
-				site,
-				"Space Rental",
-				"Rental units and houses ready for inquiry",
-				"Filter by layout, review the unit types, and call the office for the latest rate and current availability.",
-				"Call Office",
-				components.PhoneHref(site.OfficePhone),
-			).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <section id=\"rental-catalog\" class=\"page-section\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"rental-catalog\" class=\"page-section\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -66,17 +55,6 @@ func SpaceRental(site content.SiteContent, filter string, rentals []content.Rent
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</section>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = components.ContactBand(
-				site,
-				"Rental Inquiry",
-				"Talk to the office before your next move",
-				"Availability and monthly rates are confirmed directly through GN&N.",
-				"Call Office",
-				components.PhoneHref(site.OfficePhone),
-			).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -7,37 +7,11 @@ import (
 
 templ Construction(site content.SiteContent) {
 	@components.Layout(site, "Construction", "construction") {
-		@components.PageHero(
-			site,
-			"Construction",
-			"Inspection-based repair and renovation support",
-			"Review the repair scope, then book an inspection so GN&N can confirm pricing and timeline.",
-			"Call Office",
-			components.PhoneHref(site.OfficePhone),
-		)
 		<section id="construction-services" class="page-section">
-			@components.SectionLead(
-				"Repair Scope",
-				"Property work across patching, utilities, and renovation",
-				"GN&N handles residential, commercial, and government repair requests with pricing confirmed after inspection.",
-			)
 			@components.ConstructionCardGrid(site.ConstructionCards)
 		</section>
 		<section class="page-section">
-			@components.SectionLead(
-				"Work Flow",
-				"How construction requests move from call to job window",
-				"Book the inspection first, then approve the scope and timing directly with GN&N.",
-			)
 			@components.ProcessSteps(site.ConstructionSteps)
 		</section>
-		@components.ContactBand(
-			site,
-			"Schedule Inspection",
-			"Call before your next repair or renovation request",
-			"Use the office line to describe the issue and set the inspection window.",
-			"Call Office",
-			components.PhoneHref(site.OfficePhone),
-		)
 	}
 }
