@@ -2,6 +2,37 @@ package components
 
 import "gnn/internal/content"
 
+templ SectionLead(eyebrow string, title string, summary string) {
+	<div class="section-lead">
+		if eyebrow != "" {
+			<p class="eyebrow">{ eyebrow }</p>
+		}
+		<h2>{ title }</h2>
+		if summary != "" {
+			<p class="section-summary">{ summary }</p>
+		}
+	</div>
+}
+
+templ PageHero(site content.SiteContent, eyebrow string, title string, summary string, actionLabel string, actionHref string) {
+	<section class="page-hero panel">
+		<div class="page-hero-copy">
+			if eyebrow != "" {
+				<p class="eyebrow">{ eyebrow }</p>
+			}
+			<h1>{ title }</h1>
+			if summary != "" {
+				<p class="page-hero-summary">{ summary }</p>
+			}
+			if actionLabel != "" && actionHref != "" {
+				<div class="hero-actions">
+					<a class="action-button action-button-primary" href={ templ.URL(actionHref) }>{ actionLabel }</a>
+				</div>
+			}
+		</div>
+	</section>
+}
+
 templ RentalCatalogSection(activeFilter string, rentals []content.RentalOption) {
 	<section id="rental-explorer" class="page-section rental-explorer">
 		<div class="filter-row">
@@ -132,7 +163,7 @@ templ ProcessSteps(items []string) {
 	</ol>
 }
 
-templ SchedulePanel(nights []content.PerformanceNight) {
+templ SchedulePanel(nights []content.PerformanceNight, pictures []content.PictureSlot) {
 	<section id="bar-schedule" class="panel schedule-panel" data-tone="night">
 		<div class="schedule-head">
 			<div>
@@ -143,7 +174,6 @@ templ SchedulePanel(nights []content.PerformanceNight) {
 			for _, night := range nights {
 				<article class="panel schedule-card" data-tone="night">
 					<h4 class="eyebrow">{ night.Day }</h4>
-					@PictureStrip("bar-"+night.Day, night.Pictures)
 					<h5>
 						<span class="schedule-label">Singers:</span>
 						<strong class="schedule-value">{ CommaList(night.Singers) }</strong>
@@ -155,5 +185,10 @@ templ SchedulePanel(nights []content.PerformanceNight) {
 				</article>
 			}
 		</div>
+		if len(pictures) > 0 {
+			<div class="panel schedule-gallery-card" data-tone="night">
+				@PictureStrip("bar-collection", pictures)
+			</div>
+		}
 	</section>
 }

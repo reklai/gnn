@@ -8,7 +8,7 @@ import (
 templ Bar(site content.SiteContent) {
 	@components.Layout(site, "Bayside Bar", "bar") {
 		<section class="page-section">
-			@components.SchedulePanel(site.BarSchedule)
+			@components.SchedulePanel(site.BarSchedule, site.BarPictures)
 		</section>
 	}
 }
