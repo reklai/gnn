@@ -8,7 +8,9 @@ import (
 templ CleaningExpress(site content.SiteContent) {
 	@components.Layout(site, "Cleaning Express", "cleaning") {
 		<section id="cleaning-services" class="page-section">
+			@components.CoverageSummary("Cleaning Coverage", site.CleaningCoverage)
 			@components.ServiceCategoryGrid(site.CleaningGroups)
+			@components.PhotoCollectionCard("cleaning-collection", site.CleaningPictures)
 		</section>
 	}
 }

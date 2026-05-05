@@ -1,10 +1,11 @@
-# GN&N
+# G&N
 
-GN&N is a Go + templ + HTMX website for a local Palau business with four service areas:
+G&N is a Go + templ + HTMX website for a local Palau business with five service areas:
 
 - Space Rental
 - Cleaning Express
 - Construction
+- Security
 - Bayside Bar
 
 The app is server-rendered, uses a small amount of client-side JavaScript, and keeps all current site content in code.
@@ -19,7 +20,7 @@ The app is server-rendered, uses a small amount of client-side JavaScript, and k
 
 ## Current Features
 
-- Server-rendered homepage and four service pages
+- Server-rendered homepage and five service pages
 - HTMX rental filtering on `/space-rental`
 - Per-card image gallery triggers with a modal carousel
 - Mobile navigation
@@ -35,6 +36,7 @@ User-facing routes:
 - `/space-rental`
 - `/cleaning-express`
 - `/construction`
+- `/security`
 - `/bar`
 
 HTMX partials:
@@ -107,7 +109,7 @@ go run ./cmd/web
 ```text
 cmd/web/main.go                 App entry point and HTTP server setup
 internal/app/server.go         Routes, rendering, static cache headers
-internal/content/site.go       All current site content and gallery data
+internal/content/              Current site content, service data, and gallery data
 internal/components/           Shared templ components and helpers
 internal/pages/                Page-level templ files
 static/styles.css              Site styling
@@ -120,11 +122,11 @@ Generated files:
 
 ## Content Model
 
-All current business copy, phone numbers, service cards, rental data, bar schedule, and placeholder gallery entries live in:
+All current business copy, phone numbers, service cards, rental data, security details, bar schedule, and placeholder gallery entries live in:
 
-- `internal/content/site.go`
+- `internal/content/`
 
-That file is currently the single source of truth for the site.
+That package is currently the source of truth for the site.
 
 ## Gallery Model
 
@@ -145,7 +147,7 @@ Current behavior:
 - the card grid uses `ThumbSrc`
 - the modal carousel uses `FullSrc`
 - if no real image is set yet, the site renders a placeholder tile
-- galleries are scoped per card/day, not across the whole page
+- galleries are scoped per card or page-level collection
 
 ### Adding Real Images
 

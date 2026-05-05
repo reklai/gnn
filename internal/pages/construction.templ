@@ -8,7 +8,9 @@ import (
 templ Construction(site content.SiteContent) {
 	@components.Layout(site, "Construction", "construction") {
 		<section id="construction-services" class="page-section">
+			@components.CoverageStrip("Property Coverage", site.ConstructionCoverage)
 			@components.ConstructionCardGrid(site.ConstructionCards)
+			@components.PhotoCollectionCard("construction-collection", site.ConstructionPictures)
 		</section>
 		<section class="page-section">
 			@components.ProcessSteps(site.ConstructionSteps)

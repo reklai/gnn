@@ -115,12 +115,30 @@ templ ConstructionServiceCard(card content.ConstructionCard) {
 	<article class="panel construction-card" data-tone={ card.Tone }>
 		<h3>{ card.Title }</h3>
 		@PictureStrip("construction-"+card.Title, card.Pictures)
+		if card.Lead != "" {
+			<p class="card-lead">{ card.Lead }</p>
+		}
 		<ul class="bullet-list">
 			for _, point := range card.Points {
 				<li>{ point }</li>
 			}
 		</ul>
 	</article>
+}
+
+templ CoverageStrip(label string, items []string) {
+	if len(items) > 0 {
+		@CoverageSummary(label, CommaList(items))
+	}
+}
+
+templ CoverageSummary(label string, summary string) {
+	if summary != "" {
+		<div class="panel coverage-strip" data-tone="grove">
+			<strong>{ label }</strong>
+			<span>{ summary }</span>
+		</div>
+	}
 }
 
 templ PictureStrip(group string, slots []content.PictureSlot) {
@@ -155,6 +173,14 @@ templ PictureStrip(group string, slots []content.PictureSlot) {
 	}
 }
 
+templ PhotoCollectionCard(group string, pictures []content.PictureSlot) {
+	if len(pictures) > 0 {
+		<div class="panel photo-collection-card" data-tone="night">
+			@PictureStrip(group, pictures)
+		</div>
+	}
+}
+
 templ ProcessSteps(items []string) {
 	<ol class="process-strip">
 		for _, item := range items {
@@ -185,10 +211,6 @@ templ SchedulePanel(nights []content.PerformanceNight, pictures []content.Pictur
 				</article>
 			}
 		</div>
-		if len(pictures) > 0 {
-			<div class="panel schedule-gallery-card" data-tone="night">
-				@PictureStrip("bar-collection", pictures)
-			</div>
-		}
+		@PhotoCollectionCard("bar-collection", pictures)
 	</section>
 }

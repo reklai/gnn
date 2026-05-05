@@ -11,7 +11,7 @@ templ Layout(site content.SiteContent, title string, active string) {
 			<title>{ title } · { site.CompanyName }</title>
 			<meta
 				name="description"
-				content="GN&N Company website for space rental, cleaning, construction, and Bayside Bar."
+				content="G&N Company website for space rental, cleaning, construction, security, and Bayside Bar."
 			/>
 			<meta name="theme-color" content="#17324f"/>
 			<link rel="stylesheet" href={ templ.URL(StylesheetHref()) }/>
@@ -36,7 +36,7 @@ templ Header(site content.SiteContent, active string) {
 		<div class="container header-row">
 			<a class="brand-lockup" href="/">
 				<span class="brand-name">{ site.CompanyName }</span>
-				<span class="brand-tag">Rental, cleaning, construction, and Bayside Bar</span>
+				<span class="brand-tag">Rental, cleaning, construction, security, and Bayside Bar</span>
 			</a>
 			<nav class="desktop-nav" aria-label="Primary navigation">
 				for _, item := range content.PrimaryNavItems() {

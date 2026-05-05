@@ -1,0 +1,17 @@
+package pages
+
+import (
+	"gnn/internal/components"
+	"gnn/internal/content"
+)
+
+templ Security(site content.SiteContent) {
+	@components.Layout(site, "Security", "security") {
+		<section id="security-services" class="page-section">
+			<div class="card-grid service-group-grid security-grid">
+				@components.ServiceCategoryCard(site.SecurityDetails)
+			</div>
+			@components.PhotoCollectionCard("security-collection", site.SecurityPictures)
+		</section>
+	}
+}

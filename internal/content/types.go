@@ -41,6 +41,7 @@ type ServiceCategory struct {
 type ConstructionCard struct {
 	Title    string
 	Tone     string
+	Lead     string
 	Points   []string
 	Pictures []PictureSlot
 }

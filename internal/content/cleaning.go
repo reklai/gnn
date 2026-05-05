@@ -10,10 +10,8 @@ func cleaningGroups() []ServiceCategory {
 				"Bathroom and office deep cleaning",
 				"Waxing and buffing tile floors",
 				"Water blasting and pressure washing concrete",
-				"Residential, commercial, and government coverage",
 				"Available as contract work or one-time request",
 			},
-			Pictures: pictureSlots("Janitorial photo", 4),
 		},
 		{
 			Title: "Landscaping",
@@ -24,7 +22,14 @@ func cleaningGroups() []ServiceCategory {
 				"Trash pickup across the property",
 				"Available as contract work or one-time request",
 			},
-			Pictures: pictureSlots("Landscaping photo", 4),
 		},
 	}
+}
+
+func cleaningCoverage() string {
+	return "Residential properties, Commercial spaces, and Government agencies"
+}
+
+func cleaningPictures() []PictureSlot {
+	return pictureSlots("Cleaning service photo", 4)
 }

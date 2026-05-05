@@ -155,6 +155,7 @@ ol {
 
 .page-rental .page-section,
 .page-cleaning .page-section,
+.page-security .page-section,
 .page-bar .page-section {
   min-height: auto;
   align-content: start;
@@ -447,13 +448,14 @@ ol {
 .hero-service-stack {
   display: grid;
   gap: 0.8rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   align-content: start;
 }
 
 .hero-service-card {
   position: relative;
   display: grid;
+  grid-column: span 3;
   gap: 0.4rem;
   min-height: 0;
   padding: 0.95rem 0.95rem 1rem;
@@ -462,6 +464,10 @@ ol {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.16));
   box-shadow: var(--card-shadow);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.hero-service-card:nth-last-child(1):nth-child(odd) {
+  grid-column: span 6;
 }
 
 .hero-service-card::before {
@@ -508,7 +514,8 @@ ol {
 .service-group-card::before,
 .construction-card::before,
 .schedule-card::before,
-.schedule-panel::before {
+.schedule-panel::before,
+.photo-collection-card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
@@ -550,6 +557,10 @@ ol {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.construction-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .rental-card,
 .service-group-card,
 .construction-card,
@@ -577,6 +588,12 @@ ol {
   max-width: 18ch;
 }
 
+.construction-card h3 {
+  font-size: clamp(1rem, 1.2vw, 1.22rem);
+  max-width: none;
+  white-space: nowrap;
+}
+
 .rental-card-head,
 .service-group-card h3,
 .construction-card h3 {
@@ -598,10 +615,46 @@ ol {
   color: currentColor;
 }
 
+.card-lead {
+  color: var(--heading-ink);
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.coverage-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+  border-color: var(--card-border);
+  box-shadow: none;
+}
+
+.coverage-strip strong {
+  color: var(--heading-ink);
+  font-size: 0.94rem;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.coverage-strip span {
+  color: var(--muted-strong);
+  font-size: 0.94rem;
+  line-height: 1.35;
+}
+
 .picture-strip {
   display: grid;
   gap: 0.45rem;
   grid-template-columns: repeat(auto-fit, minmax(4.75rem, 1fr));
+}
+
+.rental-card .picture-strip {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .picture-slot {
@@ -824,6 +877,7 @@ ol {
 .rental-grid,
 .service-group-grid,
 .construction-grid,
+.security-grid,
 .schedule-grid {
   min-height: 100%;
   align-content: stretch;
@@ -991,7 +1045,11 @@ ol {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.schedule-gallery-card {
+.security-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.photo-collection-card {
   display: grid;
   gap: 0.75rem;
   padding: 1rem;
@@ -1000,17 +1058,11 @@ ol {
   box-shadow: none;
 }
 
-.schedule-gallery-card h3 {
-  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
-  line-height: 1.16;
-  margin: 0;
-}
-
-.schedule-gallery-card .picture-strip {
+.photo-collection-card .picture-strip {
   grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
 }
 
-.schedule-gallery-card .picture-slot {
+.photo-collection-card .picture-slot {
   min-height: 5rem;
 }
 
@@ -1109,6 +1161,11 @@ ol {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .coverage-strip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .schedule-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1155,6 +1212,11 @@ ol {
     grid-template-columns: 1fr;
   }
 
+  .hero-service-card,
+  .hero-service-card:nth-last-child(1):nth-child(odd) {
+    grid-column: auto;
+  }
+
   .home-contact-pills {
     grid-template-columns: 1fr;
   }
@@ -1186,6 +1248,14 @@ ol {
   .rental-card-head,
   .schedule-head {
     flex-direction: column;
+  }
+
+  .photo-collection-card .picture-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-collection-card .picture-slot {
+    min-height: 7rem;
   }
 
   .gallery-modal-dialog {

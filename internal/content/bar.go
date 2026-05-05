@@ -5,12 +5,12 @@ func barSchedule() []PerformanceNight {
 		{
 			Day:      "Thursday",
 			Singers:  []string{"Lisa Sandei", "Jackie Franz"},
-			Keyboard: "Maslyn",
+			Keyboard: "Maslin",
 		},
 		{
 			Day:      "Friday",
 			Singers:  []string{"Lisa Sandei", "Jackie Franz", "Sasa Naruo"},
-			Keyboard: "Maslyn",
+			Keyboard: "Maslin",
 		},
 		{
 			Day:      "Saturday",

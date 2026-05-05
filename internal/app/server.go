@@ -32,6 +32,7 @@ func (s *Server) Routes() http.Handler {
 	mux.HandleFunc("GET /space-rental", s.spaceRental)
 	mux.HandleFunc("GET /cleaning-express", s.cleaningExpress)
 	mux.HandleFunc("GET /construction", s.construction)
+	mux.HandleFunc("GET /security", s.security)
 	mux.HandleFunc("GET /bar", s.bar)
 	mux.HandleFunc("GET /partials/rentals", s.rentalCatalogPartial)
 	return s.logRequests(mux)
@@ -52,6 +53,10 @@ func (s *Server) cleaningExpress(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) construction(w http.ResponseWriter, r *http.Request) {
 	s.render(w, r, http.StatusOK, pages.Construction(s.site))
+}
+
+func (s *Server) security(w http.ResponseWriter, r *http.Request) {
+	s.render(w, r, http.StatusOK, pages.Security(s.site))
 }
 
 func (s *Server) bar(w http.ResponseWriter, r *http.Request) {

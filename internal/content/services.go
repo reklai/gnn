@@ -16,9 +16,15 @@ func serviceCards() []ServiceCard {
 		},
 		{
 			Title:   "Construction",
-			Summary: "Repair work for homes, walls, roofs, pipes, floors, and furniture.",
+			Summary: "Estimations and repair work for renovation, furniture, painting, plumbing, electrical, and practical property projects.",
 			Href:    "/construction",
 			Tone:    "sand",
+		},
+		{
+			Title:   "Security",
+			Summary: "Trained guards and equipment-inclusive security packages for residential, commercial, and government clients.",
+			Href:    "/security",
+			Tone:    "night",
 		},
 		{
 			Title:   "Bayside Bar",
